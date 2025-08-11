@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pristine Pets — Mobile Pet Grooming</title>
+  <meta name="description" content="High-end mobile dog grooming that comes to you. Bath & Blowout, Tidy Trims, Full Grooms, and spa add-ons. Serving Tipp City • Huber Heights and nearby." />
+  <meta name="format-detection" content="telephone=yes" />
+  <style>
+    :root{
+      --brand:#0e58ff;            /* rich, modern blue */
+      --brand-ink:#0a2a6a;        /* deep ink */
+      --ink:#0d1b2a;              /* main text */
+      --muted:#4f5d75;
+      --paper:#ffffff;
+      --paper-2:#f6f8ff;
+      --accent:#00bcd4;           /* subtle accent for hovers */
+      --radius:16px;
+      --shadow:0 10px 30px rgba(10,42,106,.15);
+      --shadow-soft:0 6px 18px rgba(10,42,106,.12);
+      --maxw:1100px;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      color:var(--ink);
+      background: linear-gradient(180deg, #f9fbff 0%, #fff 40%);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Global containers */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .section{padding:72px 0}
+    @media (min-width: 780px){ .section{padding:96px 0} }
+
+    /* Sticky top bar */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.8);
+      border-bottom:1px solid #e8edff;
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;color:var(--brand-ink)
+    }
+    .brand svg{width:28px;height:28px}
+    .nav-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .nav-links a{padding:8px 10px;border-radius:10px}
+    .nav-links a:hover{background:#eef3ff}
+
+    .btn{
+      display:inline-block;padding:14px 18px;border-radius:14px;font-weight:700;
+      background:var(--brand);color:#fff;box-shadow:var(--shadow);transition:transform .06s ease, box-shadow .2s ease
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(14,88,255,.25)}
+    .btn-outline{
+      background:#fff;color:var(--brand-ink);border:2px solid #e2e8ff;box-shadow:var(--shadow-soft)
+    }
+    .btn-outline:hover{border-color:#bfcfff}
+
+    /* Hero */
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(1200px 600px at 120% -10%, rgba(14,88,255,.10) 0%, transparent 70%),
+        radial-gradient(900px 500px at -10% -30%, rgba(0,188,212,.08) 0%, transparent 70%),
+        linear-gradient(180deg, #fff 0%, #f5f8ff 100%);
+    }
+    .hero .container{display:grid;gap:28px;align-items:center}
+    @media (min-width:980px){ .hero .container{grid-template-columns:1.15fr .85fr;gap:40px} }
+
+    .hero-card{
+      background:var(--paper);border-radius:calc(var(--radius) + 4px);
+      padding:28px 28px 26px;box-shadow:var(--shadow)
+    }
+    .eyebrow{font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem}
+    h1{font-size:clamp(2rem, 2.8vw + 1.2rem, 3.25rem);line-height:1.08;margin:10px 0 14px;color:var(--brand-ink)}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:60ch}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+    /* Decorative paw pattern (SVG data URI) */
+    .paws{
+      position:absolute;inset:auto -120px -140px auto;opacity:.12;pointer-events:none;transform:rotate(-8deg) scale(1.05)
+    }
+    @media (min-width:980px){ .paws{right:-80px;bottom:-100px} }
+    .hero-van{
+      border-radius:calc(var(--radius) + 6px);
+      background:#0e58ff;
+      padding:22px;
+      position:relative;
+      box-shadow:var(--shadow);
+      color:#fff;
+      min-height:320px;
+      display:flex;align-items:flex-end;justify-content:center;
+      overflow:hidden;
+    }
+    .hero-van .caption{position:absolute;top:18px;left:18px;font-weight:700;letter-spacing:.02em}
+    /* White paw decals */
+    .hero-van:before, .hero-van:after{
+      content:"";position:absolute;background-repeat:repeat;opacity:.25;pointer-events:none
+    }
+    .hero-van:before{
+      inset:-60px -20px -20px -60px;
+      background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><g fill="%23ffffff"><circle cx="36" cy="20" r="10"/><circle cx="20" cy="36" r="10"/><circle cx="52" cy="34" r="10"/><circle cx="34" cy="52" r="10"/><path d="M70 78c-10 0-22 10-22 20 0 6 6 12 22 12s22-6 22-12c0-10-12-20-22-20z"/></g></svg>');
+      background-size:140px 140px;
+      transform:rotate(-15deg);
+    }
+    .hero-van:after{
+      inset:-50px -10px -10px -30px;
+      background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><g fill="%23ffffff"><circle cx="26" cy="10" r="8"/><circle cx="10" cy="26" r="8"/><circle cx="42" cy="24" r="8"/><circle cx="24" cy="42" r="8"/><path d="M55 63c-8 0-18 8-18 16 0 5 5 10 18 10s18-5 18-10c0-8-10-16-18-16z"/></g></svg>');
+      background-size:110px 110px;
+      transform:rotate(8deg);
+    }
+    .van-card{
+      background:#fff;color:#0b1a3d;border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);width:min(540px, 100%);margin:14px auto;display:grid;gap:8px
+    }
+    .van-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .tag{display:inline-block;padding:8px 10px;border-radius:999px;background:#eef3ff;color:var(--brand-ink);font-weight:700;font-size:.9rem}
+
+    /* Services */
+    .tiles{display:grid;gap:16px}
+    @media (min-width:760px){ .tiles{grid-template-columns:repeat(3,1fr)} }
+    .tile{
+      background:var(--paper);border-radius:18px;padding:22px;box-shadow:var(--shadow-soft);display:grid;gap:10px;border:1px solid #e9edff
+    }
+    .tile h3{margin:0;color:var(--brand-ink)}
+    .price{font-weight:800;color:var(--brand);font-size:1.15rem}
+    .list{margin:0;padding:0 0 0 18px;color:#3c4a64}
+    .badge{display:inline-block;background:#edfbff;color:#046b7b;border:1px solid #bfefff;border-radius:999px;padding:6px 10px;font-weight:700;font-size:.85rem}
+
+    /* Split sections */
+    .split{display:grid;gap:24px;align-items:center}
+    @media (min-width:980px){ .split{grid-template-columns:1.1fr .9fr;gap:40px} }
+
+    .card{background:var(--paper);border-radius:18px;padding:22px;box-shadow:var(--shadow-soft);border:1px solid #e9edff}
+    .muted{color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+    .kpi{background:#fff;border:1px solid #e9edff;border-radius:14px;padding:14px;text-align:center}
+    .kpi strong{display:block;font-size:1.3rem;color:var(--brand-ink)}
+
+    /* CTA bar */
+    .cta{
+      background:linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
+      color:#fff;border-radius:22px;box-shadow:var(--shadow);padding:26px
+    }
+    .cta .row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between}
+    .cta h3{margin:0}
+    .cta .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Footer */
+    footer{padding:40px 0;color:#42506a}
+    .foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border-top:1px solid #e9edff;padding-top:18px}
+    .tiny{font-size:.9rem;color:#6b7a99}
+
+    /* Accessibility & iPad niceties */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+    }
+    html{scroll-behavior:smooth}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <!-- Paw + wordmark -->
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M18 17c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5zm-7 2c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm22 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zM11 27c0-3.9 6-7 13-7s13 3.1 13 7c0 2.7-3.3 5-13 5s-13-2.3-13-5z"/></svg>
+        <span>Pristine Pets</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#about">Why Us</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="tel:+19375550123" aria-label="Call Pristine Pets">(937) 555-0123</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero section" id="top">
+    <div class="container">
+      <div class="hero-card">
+        <div class="eyebrow">Mobile Pet Grooming</div>
+        <h1>Luxury grooming at your curb.</h1>
+        <p class="lead">We bring a spotless, fully equipped grooming van to your driveway—delivering a serene, one-on-one experience for pets and a frictionless day for you.</p>
+
+        <div class="hero-cta">
+          <a class="btn" href="#booking">Book an appointment</a>
+          <a class="btn btn-outline" href="#services">See services</a>
+        </div>
+
+        <div class="kpis" style="margin-top:18px">
+          <div class="kpi"><strong>1-to-1</strong><span class="tiny">Pet attention</span></div>
+          <div class="kpi"><strong>No crates</strong><span class="tiny">Calm & hygienic</span></div>
+          <div class="kpi"><strong>We come to you</strong><span class="tiny">Zero travel</span></div>
+        </div>
+      </div>
+
+      <div class="hero-van" aria-label="Blue grooming van with white paw decals">
+        <div class="caption">Pristine Pets • Mobile Pet Spa</div>
+        <div class="van-card">
+          <div class="van-grid">
+            <div><span class="tag">Hydro-bath</span></div>
+            <div><span class="tag">Hand blow-dry</span></div>
+            <div><span class="tag">Clipping & scissoring</span></div>
+            <div><span class="tag">Sanitary tidy</span></div>
+          </div>
+          <div class="tiny" style="margin-top:4px">Serving Tipp City • Huber Heights • Surrounding areas</div>
+        </div>
+      </div>
+      <svg class="paws" width="520" height="520" viewBox="0 0 120 120" aria-hidden="true">
+        <g fill="#0e58ff">
+          <circle cx="16" cy="18" r="6"/><circle cx="28" cy="8" r="6"/><circle cx="40" cy="18" r="6"/><circle cx="28" cy="28" r="6"/>
+          <path d="M60 60c-9 0-20 9-20 17 0 6 6 11 20 11s20-5 20-11c0-8-11-17-20-17z"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 style="margin-top:0;color:var(--brand-ink)">Signature Services</h2>
+      <p class="muted">Transparent, high-end care. Final pricing varies by breed, coat, and condition. “Starting at” reflects small/short-coat guidance.</p>
+
+      <div class="tiles" style="margin-top:18px">
+        <article class="tile" aria-labelledby="svc1">
+          <h3 id="svc1">Bath &amp; Blowout</h3>
+          <div class="price">Starting at $99</div>
+          <ul class="list">
+            <li>Luxe shampoo & conditioner matched to coat</li>
+            <li>Hand blow-dry (no cage dryers)</li>
+            <li>Nail trim & file, ear clean, light brush-out</li>
+            <li>Fragrance-free option available</li>
+          </ul>
+          <span class="badge">Most popular for short coats</span>
+        </article>
+
+        <article class="tile" aria-labelledby="svc2">
+          <h3 id="svc2">Bath &amp; Tidy Trim</h3>
+          <div class="price">Starting at $109</div>
+          <ul class="list">
+            <li>Everything in Bath & Blowout</li>
+            <li>Paw, sanitary, and face tidy</li>
+            <li>Pads & paw balm finish</li>
+          </ul>
+          <span class="badge">Great between full grooms</span>
+        </article>
+
+        <article class="tile" aria-labelledby="svc3">
+          <h3 id="svc3">Full Groom (All-Over Trim)</h3>
+          <div class="price">Starting at $139</div>
+          <ul class="list">
+            <li>Custom clip/scissor style</li>
+            <li>Detangle & de-mat (as needed)</li>
+            <li>Coat-specific finishing spray</li>
+          </ul>
+          <span class="badge">Show-ready finish</span>
+        </article>
+      </div>
+
+      <div class="split" style="margin-top:26px">
+        <div class="card">
+          <h3 style="margin-top:0">Spa Add-Ons</h3>
+          <ul class="list">
+            <li>De-shed treatment <strong>+$29</strong></li>
+            <li>Teeth brush & enamel gel</li>
+            <li>Blueberry facial</li>
+            <li>Pawdicure & nail buff</li>
+            <li>Anal gland expression (by request)</li>
+          </ul>
+          <p class="tiny" style="margin-top:8px">We’ll confirm add-on suitability at check-in.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">What’s included</h3>
+          <p class="muted">Every service includes a health check-in, gentle handling, fresh linens, and full cleanup—because a serene experience is part of the groom.</p>
+          <div class="kpis">
+            <div class="kpi"><strong>Sanitized</strong><span class="tiny">Between visits</span></div>
+            <div class="kpi"><strong>Insured</strong><span class="tiny">Professionally covered</span></div>
+            <div class="kpi"><strong>On time</strong><span class="tiny">Text ahead</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section" id="about">
+    <div class="container split">
+      <div>
+        <h2 style="color:var(--brand-ink);margin-top:0">High-end care, without the hassle</h2>
+        <p class="muted">Your pet gets calm, 1-to-1 attention in a meticulously clean environment. You get your day back. Our fully outfitted van carries salon-grade equipment, filtered water, and climate control for year-round comfort.</p>
+        <ul class="list">
+          <li>Certified groomers with gentle, fear-free handling</li>
+          <li>Appointments that start on time (we come to you)</li>
+          <li>Contactless payment and digital receipts</li>
+          <li>Local small business—proudly serving Miami Valley</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Service Area</h3>
+        <p class="muted">Tipp City • Huber Heights • Vandalia • Beavercreek • Englewood</p>
+        <p class="tiny">Not sure if you’re in range? <a href="#contact">Ask us</a>—we can often accommodate nearby.</p>
+        <div style="height:14px"></div>
+        <h3 style="margin:0 0 8px 0">Hours</h3>
+        <p class="muted">Mon–Sat 8:00a–6:00p • Limited Sunday availability</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 style="color:var(--brand-ink);margin-top:0">FAQ</h2>
+      <div class="tiles" style="margin-top:16px">
+        <details class="tile"><summary><strong>Do you groom large or double-coat breeds?</strong></summary><p class="muted">Yes—subject to coat condition and temperament. Extra time may apply for heavy de-shed or matting.</p></details>
+        <details class="tile"><summary><strong>Do you crate pets?</strong></summary><p class="muted">No. We provide calm, one-on-one care start to finish.</p></details>
+        <details class="tile"><summary><strong>What about anxious or senior pets?</strong></summary><p class="muted">We use low-stress handling and extra time as needed. Share any health notes when booking.</p></details>
+        <details class="tile"><summary><strong>How do I pay?</strong></summary><p class="muted">Card, tap-to-pay, or invoice—your choice. Gratuity goes directly to your groomer.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING -->
+  <section class="section" id="contact">
+    <div class="container cta" id="booking" style="scroll-margin-top:90px">
+      <div class="row">
+        <h3>Ready to pamper your pet?</h3>
+        <div class="actions">
+          <a class="btn" href="tel:+19375550123">Call (937) 555-0123</a>
+          <a class="btn btn-outline" href="mailto:hello@pristinepets.org?subject=Grooming%20Inquiry&body=Hi%20Pristine%20Pets%2C%0A%0APet%20name%3A%0ABreed%2FSize%3A%0AServices%20interested%20in%3A%0APreferred%20dates%2Ftimes%3A%0AAddress%3A%0A%0AThanks!">Email us</a>
+        </div>
+      </div>
+      <p class="tiny" style="margin:8px 0 0 0">Text available upon request • Same-week spots go fast</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div class="tiny">© <span id="year"></span> Pristine Pets Mobile Pet Spa • All rights reserved</div>
+      <div class="tiny">Tipp City, OH • Huber Heights, OH</div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS -->
+  <script>
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // iPad: maintain focus/scroll target offset beneath sticky nav
+    for (const link of document.querySelectorAll('a[href^="#"]')) {
+      link.addEventListener('click', function (e) {
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({top: y, behavior: 'smooth'});
+        history.pushState(null, "", "#" + id);
+      });
+    }
+  </script>
+</body>
+</html>
