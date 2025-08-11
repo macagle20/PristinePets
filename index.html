@@ -136,6 +136,13 @@
     .list{margin:0;padding:0 0 0 18px;color:#3c4a64}
     .badge{display:inline-block;background:#edfbff;color:#046b7b;border:1px solid #bfefff;border-radius:999px;padding:6px 10px;font-weight:700;font-size:.85rem}
 
+    /* Gallery grid */
+    .gallery-grid{display:grid;gap:16px}
+    @media (min-width:760px){ .gallery-grid{grid-template-columns:repeat(3,1fr)} }
+    .gallery-grid figure{margin:0;background:var(--paper);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft)}
+    .gallery-grid img{width:100%;display:block}
+    .gallery-grid figcaption{padding:10px;color:var(--muted);font-size:.9rem}
+
     /* Split sections */
     .split{display:grid;gap:24px;align-items:center}
     @media (min-width:980px){ .split{grid-template-columns:1.1fr .9fr;gap:40px} }
@@ -182,6 +189,8 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#about">Why Us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
         <a class="btn" href="tel:+19375550123" aria-label="Call Pristine Pets">(937) 555-0123</a>
@@ -317,6 +326,48 @@
         <div style="height:14px"></div>
         <h3 style="margin:0 0 8px 0">Hours</h3>
         <p class="muted">Mon–Sat 8:00a–6:00p • Limited Sunday availability</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 style="color:var(--brand-ink);margin-top:0">Gallery</h2>
+      <div class="gallery-grid" style="margin-top:16px">
+        <figure>
+          <img src="https://placedog.net/400/260?id=1" alt="Groomed dog posing" />
+          <figcaption>Fresh Cut</figcaption>
+        </figure>
+        <figure>
+          <img src="https://placedog.net/400/260?id=2" alt="Before and after grooming" />
+          <figcaption>Before &amp; After</figcaption>
+        </figure>
+        <figure>
+          <img src="https://placedog.net/400/260?id=3" alt="Happy dog after bath" />
+          <figcaption>Happy Client</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <h2 style="color:var(--brand-ink);margin-top:0">Testimonials</h2>
+      <div class="tiles" style="margin-top:16px">
+        <article class="tile">
+          <p style="margin:0">"Our golden retriever has never looked better. The convenience is unbeatable!"</p>
+          <p class="tiny">— Jamie L.</p>
+        </article>
+        <article class="tile">
+          <p style="margin:0">"Professional, punctual, and so kind to our anxious pup."</p>
+          <p class="tiny">— Mark R.</p>
+        </article>
+        <article class="tile">
+          <p style="margin:0">"The van is spotless and the groom was perfection. Highly recommend!"</p>
+          <p class="tiny">— Sierra K.</p>
+        </article>
       </div>
     </div>
   </section>
