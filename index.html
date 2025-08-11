@@ -70,39 +70,34 @@
     }
     .btn-outline:hover{border-color:#bfcfff}
 
-    /* Hero */
-    .hero{
-      position:relative;overflow:hidden;
-      background:linear-gradient(-45deg, #0e58ff, #00bcd4, #1747ff, #0e58ff);
-      background-size:400% 400%;
-      animation:heroBg 15s ease infinite;
-    }
-    @keyframes heroBg {
-      0% {background-position:0% 50%;}
-      50% {background-position:100% 50%;}
-      100% {background-position:0% 50%;}
-    }
-    .hero .container{display:grid;gap:28px;align-items:center}
-    @media (min-width:980px){ .hero .container{grid-template-columns:1.15fr .85fr;gap:40px} }
-
-    .hero-card{
-      background:var(--paper);border-radius:calc(var(--radius) + 4px);
-      padding:28px 28px 26px;box-shadow:var(--shadow)
-    }
-    .eyebrow{font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem}
-    h1{font-size:clamp(2rem, 2.8vw + 1.2rem, 3.25rem);line-height:1.08;margin:10px 0 14px;color:var(--brand-ink)}
-    .lead{font-size:1.05rem;color:var(--muted);max-width:60ch}
-    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-
-    /* Decorative paw pattern (SVG data URI) */
-    .paws{
-      position:absolute;inset:auto -120px -140px auto;opacity:.12;pointer-events:none;transform:rotate(-8deg) scale(1.05)
-    }
-    @media (min-width:980px){ .paws{right:-80px;bottom:-100px} }
-    .van-img{
-      border-radius:calc(var(--radius) + 6px);
-      box-shadow:var(--shadow);
-    }
+      /* Hero */
+      .hero{
+        position:relative;overflow:hidden;
+        background:linear-gradient(-45deg, #0e58ff, #00bcd4, #1747ff, #0e58ff);
+        background-size:400% 400%;
+        animation:heroBg 15s ease infinite;
+      }
+      .hero .container{display:flex;justify-content:center;align-items:center}
+      @keyframes heroBg {
+        0% {background-position:0% 50%;}
+        50% {background-position:100% 50%;}
+        100% {background-position:0% 50%;}
+      }
+      .hero-card{
+        background:var(--paper);
+        border-radius:calc(var(--radius) + 4px);
+        padding:28px;
+        box-shadow:var(--shadow);
+      }
+      .van-img{
+        display:block;
+        max-width:100%;
+        height:auto;
+      }
+      .paws{
+        position:absolute;inset:auto -120px -140px auto;opacity:.12;pointer-events:none;transform:rotate(-8deg) scale(1.05)
+      }
+      @media (min-width:980px){ .paws{right:-80px;bottom:-100px} }
 
     /* Services */
     .tiles{display:grid;gap:16px}
@@ -182,23 +177,8 @@
   <section class="hero section" id="top">
     <div class="container">
       <div class="hero-card">
-        <div class="eyebrow">Mobile Pet Grooming</div>
-        <h1>Luxury grooming at your curb.</h1>
-        <p class="lead">We bring a spotless, fully equipped grooming van to your driveway—delivering a serene, one-on-one experience for pets and a frictionless day for you.</p>
-
-        <div class="hero-cta">
-          <a class="btn" href="#booking">Book an appointment</a>
-          <a class="btn btn-outline" href="#services">See services</a>
-        </div>
-
-        <div class="kpis" style="margin-top:18px">
-          <div class="kpi"><strong>1-to-1</strong><span class="tiny">Pet attention</span></div>
-          <div class="kpi"><strong>No crates</strong><span class="tiny">Calm & hygienic</span></div>
-          <div class="kpi"><strong>We come to you</strong><span class="tiny">Zero travel</span></div>
-        </div>
+        <img src="Van Mock-up-new.JPG" alt="Pristine Pets Mobile Pet Spa van" class="van-img" />
       </div>
-
-        <img src="Van Mock-up.jpg" alt="Pristine Pets Mobile Pet Spa van" class="van-img" />
       <svg class="paws" width="520" height="520" viewBox="0 0 120 120" aria-hidden="true">
         <g fill="#0e58ff">
           <circle cx="16" cy="18" r="6"/><circle cx="28" cy="8" r="6"/><circle cx="40" cy="18" r="6"/><circle cx="28" cy="28" r="6"/>
