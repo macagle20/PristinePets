@@ -60,6 +60,13 @@
     .nav-links a{padding:8px 10px;border-radius:10px}
     .nav-links a:hover{background:#eef3ff}
 
+    /* Mobile nav: only show Book Now button */
+    @media (max-width:600px){
+      .brand{display:none}
+      .nav-inner{justify-content:flex-end}
+      .nav-links a:not(.btn){display:none}
+    }
+
     .btn{
       display:inline-block;padding:14px 18px;border-radius:14px;font-weight:700;
       background:var(--brand);color:#fff;box-shadow:var(--shadow);transition:transform .06s ease, box-shadow .2s ease
@@ -168,7 +175,7 @@
         <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a class="btn" href="tel:+12098199644" aria-label="Call Pristine Pets">209.819.9644</a>
+        <a class="btn book-now" href="#">BOOK NOW!</a>
       </nav>
     </div>
   </header>
@@ -182,7 +189,7 @@
         <p class="lead">We bring a spotless, fully equipped grooming van to your driveway—delivering a serene, one-on-one experience for pets and a frictionless day for you.</p>
 
         <div class="hero-cta">
-          <a class="btn" href="#booking">Book an appointment</a>
+          <a class="btn book-now" href="#">Book an appointment</a>
           <a class="btn btn-outline" href="#services">See services</a>
         </div>
 
@@ -375,6 +382,14 @@
     const yearEl = document.getElementById('year');
     if (yearEl) {
       yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Temporary booking popup
+    for (const btn of document.querySelectorAll('.book-now')) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        alert('Coming soon');
+      });
     }
 
     // Maintain focus/scroll target offset beneath sticky nav
