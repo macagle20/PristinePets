@@ -73,10 +73,14 @@
     /* Hero */
     .hero{
       position:relative;overflow:hidden;
-      background:
-        radial-gradient(1200px 600px at 120% -10%, rgba(14,88,255,.10) 0%, transparent 70%),
-        radial-gradient(900px 500px at -10% -30%, rgba(0,188,212,.08) 0%, transparent 70%),
-        linear-gradient(180deg, #fff 0%, #f5f8ff 100%);
+      background:linear-gradient(-45deg, #0e58ff, #00bcd4, #1747ff, #0e58ff);
+      background-size:400% 400%;
+      animation:heroBg 15s ease infinite;
+    }
+    @keyframes heroBg {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
     }
     .hero .container{display:grid;gap:28px;align-items:center}
     @media (min-width:980px){ .hero .container{grid-template-columns:1.15fr .85fr;gap:40px} }
@@ -170,6 +174,7 @@
     footer{padding:40px 0;color:#42506a}
     .foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border-top:1px solid #e9edff;padding-top:18px}
     .tiny{font-size:.9rem;color:#6b7a99}
+    .cta .tiny{color:#fff}
 
     /* Accessibility & iPad niceties */
     @media (prefers-reduced-motion: reduce){
@@ -325,7 +330,7 @@
       </div>
       <div class="card">
         <h3 style="margin-top:0">Service Area</h3>
-        <p class="muted">Tipp City • Huber Heights • Vandalia • Beavercreek • Englewood</p>
+        <p class="muted">Tipp City • Huber Heights • Vandalia • Beavercreek • Englewood • Dayton</p>
         <p class="tiny">Not sure if you’re in range? <a href="#contact">Ask us</a>—we can often accommodate nearby.</p>
         <div style="height:14px"></div>
         <h3 style="margin:0 0 8px 0">Hours</h3>
@@ -405,7 +410,7 @@
 
   <footer>
     <div class="container foot">
-      <div class="tiny">© <span id="year"></span> Pristine Pets Mobile Pet Spa • All rights reserved</div>
+      <div class="tiny">© <span id="year"></span> Pristine Pets LLC • All rights reserved</div>
       <div class="tiny">Tipp City, OH • Huber Heights, OH</div>
     </div>
   </footer>
