@@ -291,7 +291,7 @@
 
     /* Spa upgrades section */
     .spa-section {
-      margin-top: 64px;
+      margin-top: 32px;
       background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%);
       border-radius: 24px;
       padding: 48px 32px;
@@ -370,12 +370,7 @@
       box-shadow: 0 4px 12px rgba(139, 90, 43, 0.3);
     }
 
-    .spa-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--brand-ink);
-      margin: 0 0 12px;
-    }
+
 
     .spa-list {
       list-style: none;
@@ -397,6 +392,62 @@
       position: absolute;
       left: 0;
       font-size: 0.9rem;
+    }
+
+    .spa-icon.premium-icon {
+      background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #d4a853 100%);
+      box-shadow: 0 6px 16px rgba(107, 68, 35, 0.4);
+    }
+
+    .spa-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin: 8px 0 12px;
+      text-align: center;
+    }
+
+    .spa-price.premium-price {
+      color: #8b5a2b;
+      font-size: 1.5rem;
+    }
+
+    .spa-card.premium {
+      border: 2px solid rgba(139, 90, 43, 0.3);
+      box-shadow: 0 12px 40px rgba(139, 90, 43, 0.2);
+    }
+
+    .spa-card.premium:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(139, 90, 43, 0.25);
+    }
+
+    .spa-card.membership {
+      border: 2px solid rgba(14, 88, 255, 0.3);
+      box-shadow: 0 12px 40px rgba(14, 88, 255, 0.15);
+    }
+
+    .spa-card.membership:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(14, 88, 255, 0.2);
+    }
+
+    .spa-icon.membership-icon {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+      box-shadow: 0 6px 16px rgba(14, 88, 255, 0.3);
+    }
+
+    .spa-price.membership-price {
+      color: var(--brand);
+      font-size: 1.5rem;
+    }
+
+    .spa-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand-ink);
+      margin: 0;
+      text-align: center;
     }
 
 
@@ -546,10 +597,10 @@
 
         <!-- Bath & Tidy -->
         <div class="pricing-card">
-          <div class="pricing-header popular">
-            <h3 class="service-title">Bath & Tidy</h3>
-            <p class="service-subtitle">Our Most Popular</p>
-          </div>
+
+          <h3 class="service-title">Bath & Tidy</h3>
+          <p class="service-subtitle">Our Most Popular</p>
+
           <div class="pricing-body">
             <div class="price-table">
               <div class="price-row">
@@ -655,6 +706,27 @@
             <li>Paw balm & nail buff finish</li>
             <li>Anal gland expression (on request)</li>
             <li>De-shedding treatment for double coats</li>
+          </ul>
+        </div>
+
+        <!-- Monthly Membership -->
+        <div class="spa-card membership">
+          <div class="spa-icon membership-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                fill="white" />
+            </svg>
+          </div>
+          <h4 class="spa-title">Monthly Membership</h4>
+          <div class="spa-price membership-price">$199/mo</div>
+          <ul class="spa-list">
+            <li>Unlimited Full Grooms (up to 2 per month)</li>
+            <li>All Pristine Spa upgrades included</li>
+            <li>Priority booking & scheduling</li>
+            <li>15% off additional services</li>
+            <li>No cancellation fees</li>
+            <li>Perfect for multi-pet households</li>
           </ul>
         </div>
 
