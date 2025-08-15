@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — Pristine Pets Mobile Grooming</title>
+  <meta name="description"
+    content="Transparent pricing for luxury mobile dog grooming. Bath & Brush, Bath & Tidy, Full Groom services plus premium spa upgrades." />
+  <meta name="format-detection" content="telephone=yes" />
+  <style>
+    :root {
+      --brand: #0e58ff;
+      --brand-ink: #0a2a6a;
+      --ink: #0d1b2a;
+      --muted: #4f5d75;
+      --paper: #ffffff;
+      --paper-2: #f6f8ff;
+      --accent: #00bcd4;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(10, 42, 106, .15);
+      --shadow-soft: 0 6px 18px rgba(10, 42, 106, .12);
+      --maxw: 1100px;
+    }
+
+    /* Reset-ish */
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      color: var(--ink);
+      background:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 100 100"><g fill="%230e58ff0D"><circle cx="20" cy="20" r="8"/><circle cx="60" cy="15" r="8"/><circle cx="15" cy="60" r="8"/><circle cx="65" cy="65" r="8"/><path d="M40 40c-8 0-16 8-16 16 0 5 5 11 16 11s16-6 16-11c0-8-8-16-16-16z"/></g></svg>'),
+        linear-gradient(180deg, #f9fbff 0%, #fff 40%);
+      background-repeat: repeat, no-repeat;
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    /* Global containers */
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .section {
+      padding: 72px 0
+    }
+
+    @media (min-width: 780px) {
+      .section {
+        padding: 96px 0
+      }
+    }
+
+    /* Sticky top bar */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(180%) blur(10px);
+      background: rgba(255, 255, 255, .8);
+      border-bottom: 1px solid #e8edff;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      color: var(--brand-ink)
+    }
+
+    .brand svg {
+      width: 28px;
+      height: 28px
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border-radius: 10px
+    }
+
+    .nav-links a:hover {
+      background: #eef3ff
+    }
+
+    /* Mobile nav: only show Book Now button */
+    @media (max-width:600px) {
+      .nav-links a:not(.btn) {
+        display: none
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      background: var(--brand);
+      color: #fff;
+      box-shadow: var(--shadow);
+      transition: transform .06s ease, box-shadow .2s ease
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(14, 88, 255, .25)
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--brand-ink);
+      border: 2px solid #e2e8ff;
+      box-shadow: var(--shadow-soft)
+    }
+
+    .btn-outline:hover {
+      border-color: #bfcfff
+    }
+
+    /* Hero section for pricing page */
+    .hero-simple {
+      background: linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+
+    .hero-simple h1 {
+      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+      margin: 0 0 16px;
+      font-weight: 800;
+    }
+
+    .hero-simple p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    /* Pricing grid */
+    .pricing-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 760px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pricing-card {
+      background: var(--paper);
+      border-radius: 20px;
+      border: 1px solid #e9edff;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .pricing-header {
+      padding: 24px 24px 0;
+      text-align: center;
+    }
+
+    .pricing-header.popular {
+      background: linear-gradient(135deg, #d4a853 0%, #f4d03f 100%);
+      color: #fff;
+      position: relative;
+    }
+
+    .pricing-header.popular::after {
+      content: "Our Most Popular";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #d4a853;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .service-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .service-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0 0 16px;
+    }
+
+    .pricing-body {
+      padding: 0 24px 24px;
+    }
+
+    .price-table {
+      margin: 16px 0;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f4ff;
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .size-label {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .price-value {
+      font-weight: 700;
+      color: var(--brand);
+      font-size: 1.1rem;
+    }
+
+    .service-description {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin: 16px 0 0;
+    }
+
+    /* Spa upgrades section */
+    .spa-section {
+      margin-top: 48px;
+    }
+
+    .spa-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    @media (min-width: 600px) {
+      .spa-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .spa-card {
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #e9edff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .spa-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .spa-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-ink);
+      margin: 0 0 8px;
+    }
+
+    .spa-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .spa-list li {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 4px 0;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .spa-list li::before {
+      content: "•";
+      color: var(--brand);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Standalone add-ons */
+    .addon-section {
+      background: var(--paper-2);
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 32px;
+      border: 1px solid #e9edff;
+    }
+
+    .addon-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand-ink);
+      margin: 0 0 12px;
+      text-align: center;
+    }
+
+    .addon-subtitle {
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 24px;
+    }
+
+    .addon-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .addon-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #e2e8ff;
+    }
+
+    .addon-item:last-child {
+      border-bottom: none;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
+      color: #fff;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .cta-section h3 {
+      margin: 0 0 16px;
+      font-size: 1.5rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      color: #42506a
+    }
+
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #e9edff;
+      padding-top: 18px
+    }
+
+    .tiny {
+      font-size: .9rem;
+      color: #6b7a99
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
+      }
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="currentColor"
+            d="M18 17c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5zm-7 2c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm22 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zM11 27c0-3.9 6-7 13-7s13 3.1 13 7c0 2.7-3.3 5-13 5s-13-2.3-13-5z" />
+        </svg>
+        <span>Pristine Pets</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">Why Us</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="btn book-now" href="#">BOOK NOW!</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-simple">
+    <div class="container">
+      <h1>Pristine Pets — Luxury Mobile Grooming at Your Door</h1>
+      <p>Because your best friend deserves the best care. Choose from our signature grooming packages, designed for
+        every coat, style, and personality.</p>
+    </div>
+  </section>
+
+  <!-- MAIN PRICING -->
+  <section class="section">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <!-- Bath & Brush -->
+        <div class="pricing-card">
+          <div class="pricing-header"
+            style="background: linear-gradient(135deg, #4a9b8e 0%, #6bb7a8 100%); color: white;">
+            <h3 class="service-title">Bath & Brush</h3>
+            <p class="service-subtitle">Fresh & Clean Essentials</p>
+          </div>
+          <div class="pricing-body">
+            <div class="price-table">
+              <div class="price-row">
+                <span class="size-label">Small</span>
+                <span class="price-value">$65</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">Medium</span>
+                <span class="price-value">$75</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">Large</span>
+                <span class="price-value">$90</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">XL</span>
+                <span class="price-value">$110</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Bath, blow-dry, brush-out, nail trim, ear cleaning
+            </p>
+          </div>
+        </div>
+
+        <!-- Bath & Tidy -->
+        <div class="pricing-card">
+          <div class="pricing-header popular">
+            <h3 class="service-title">Bath & Tidy</h3>
+            <p class="service-subtitle">Our Most Popular</p>
+          </div>
+          <div class="pricing-body">
+            <div class="price-table">
+              <div class="price-row">
+                <span class="size-label">Small</span>
+                <span class="price-value">$85</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">Medium</span>
+                <span class="price-value">$95</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">Large</span>
+                <span class="price-value">$115</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">XL</span>
+                <span class="price-value">$135</span>
+              </div>
+            </div>
+            <p class="service-description">
+              All from <strong>Bath & Tidy</strong> + plus face, paw, and sanitary trim
+            </p>
+          </div>
+        </div>
+
+        <!-- Full Groom -->
+        <div class="pricing-card">
+          <div class="pricing-header"
+            style="background: linear-gradient(135deg, #4a9b8e 0%, #6bb7a8 100%); color: white;">
+            <h3 class="service-title">Full Groom</h3>
+            <p class="service-subtitle">Show Ready Perfection</p>
+          </div>
+          <div class="pricing-body">
+            <div class="price-table">
+              <div class="price-row">
+                <span class="size-label">Small</span>
+                <span class="price-value">$105</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">Medium</span>
+                <span class="price-value">$125</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">Large</span>
+                <span class="price-value">$145</span>
+              </div>
+              <div class="price-row">
+                <span class="size-label">XL</span>
+                <span class="price-value">$165</span>
+              </div>
+            </div>
+            <p class="service-description">
+              All from <strong>Bath & Tidy</strong> + full-body haircut
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM SPA UPGRADES -->
+  <section class="section">
+    <div class="container spa-section">
+      <h2 style="text-align: center; color: var(--brand-ink); margin: 0 0 8px;">Premium Spa Upgrades</h2>
+
+      <div class="spa-grid">
+
+        <!-- Pristine Spa -->
+        <div class="spa-card">
+          <div class="spa-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="white" />
+            </svg>
+          </div>
+          <h4 class="spa-title">Pristine Spa</h4>
+          <ul class="spa-list">
+            <li>Blueberry facial +30</li>
+            <li>Teeth Brushing 10</li>
+            <li>Flea/Tick Treatment</li>
+            <li>Specialty Shampoo</li>
+          </ul>
+        </div>
+
+        <!-- De-Shed Experience -->
+        <div class="spa-card">
+          <div class="spa-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 8C13.1 8 14 7.1 14 6S13.1 4 12 4 10 4.9 10 6 10.9 8 12 8ZM21 9V7L15 7.5V9L21 9ZM15 13.5C16.66 13.5 18 14.84 18 16.5V21H12V16.5C12 14.84 13.34 13.5 15 13.5Z"
+                fill="white" />
+            </svg>
+          </div>
+          <h4 class="spa-title">De-Shed Experience</h4>
+          <ul class="spa-list">
+            <li>High-velocity blowout</li>
+            <li>Shed-control shampoo & conditioner</li>
+            <li>Extended brushing session</li>
+          </ul>
+        </div>
+
+        <!-- Luxury Upgrade -->
+        <div class="spa-card">
+          <div class="spa-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9L21 9ZM1 9V7L7 7.5V9L1 9ZM13 12V22H11V12H13Z"
+                fill="white" />
+            </svg>
+          </div>
+          <h4 class="spa-title">Luxury Upgrade</h4>
+          <ul class="spa-list">
+            <li>Nail Grind Upgrade 15</li>
+            <li>Teeth Brushing 10</li>
+            <li>Flea/Tick Treatment 20-30</li>
+            <li>Specialty Shampoo</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDALONE ADD-ONS -->
+  <section class="section">
+    <div class="container">
+      <div class="addon-section">
+        <h3 class="addon-title">Standalone Add-Ons</h3>
+        <p class="addon-subtitle">Perfect for kennels, apartment communities, and pet daycares:</p>
+
+        <div class="addon-grid">
+          <div>
+            <div class="addon-item">
+              <span>5-9 dogs in one location</span>
+              <span style="font-weight: 700; color: var(--brand);">10% off each</span>
+            </div>
+            <div class="addon-item">
+              <span>10+ dogs + free nail grind upgrades</span>
+              <span style="font-weight: 700; color: var(--brand);">Contact us</span>
+            </div>
+          </div>
+          <div>
+            <div class="addon-item">
+              <span>Full-day booking up to 10 full grooms</span>
+              <span style="font-weight: 700; color: var(--brand);">$90—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h3>📅 Book Your Groom Now</h3>
+        <p>Ready to give your pet the luxury treatment they deserve?</p>
+        <div class="cta-actions">
+          <a class="btn" href="tel:+12098199644">Call 209.819.9644</a>
+          <a class="btn btn-outline"
+            href="mailto:support@pristinepets.org?subject=Grooming%20Inquiry&body=Hi%20Pristine%20Pets%2C%0A%0APet%20name%3A%0ABreed%2FSize%3A%0AServices%20interested%20in%3A%0APreferred%20dates%2Ftimes%3A%0AAddress%3A%0A%0AThanks!">support@pristinepets.org</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div class="tiny">© <span id="year"></span> Pristine Pets LLC • All rights reserved</div>
+      <div class="tiny">Tipp City, OH • Huber Heights, OH</div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS -->
+  <script>
+    // Current year in footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Temporary booking popup
+    for (const btn of document.querySelectorAll('.book-now')) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        alert('Coming soon');
+      });
+    }
+  </script>
+</body>
+
+</html>
