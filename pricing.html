@@ -338,7 +338,9 @@
 
     @media (min-width: 600px) {
       .spa-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 24px auto 0;
       }
     }
 
@@ -665,30 +667,11 @@
   <!-- PREMIUM SPA UPGRADES -->
   <section class="section">
     <div class="container spa-section">
-      <h2 style="text-align: center; color: var(--brand-ink); margin: 0 0 8px;">Premium Spa Upgrades</h2>
+      <h2 style="text-align: center; color: var(--brand-ink); margin: 0 0 8px;">Premium Spa Upgrade</h2>
 
       <p class="spa-subtitle">Indulge your pet with our luxurious spa treatments and specialized care services</p>
 
       <div class="spa-grid">
-
-        <!-- Luxury Upgrade -->
-        <div class="spa-card">
-          <div class="spa-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9L21 9ZM1 9V7L7 7.5V9L1 9ZM13 12V22H11V12H13Z"
-                fill="white" />
-            </svg>
-          </div>
-          <h4 class="spa-title">Luxury Upgrade</h4>
-          <div class="spa-price">+$25</div>
-          <ul class="spa-list">
-            <li>Nail grinding (vs. standard trim)</li>
-            <li>Teeth brushing with enzymatic gel</li>
-            <li>Cologne or fragrance-free finish</li>
-            <li>Premium conditioning treatment</li>
-          </ul>
-        </div>
 
         <!-- Pristine Spa -->
         <div class="spa-card premium">
@@ -698,34 +681,14 @@
             </svg>
           </div>
           <h4 class="spa-title">Pristine Spa</h4>
-          <div class="spa-price premium-price">+$45</div>
+          <div class="spa-price premium-price">+$35</div>
           <ul class="spa-list">
-            <li>Everything in Luxury Upgrade</li>
+            <li>Nail grinding upgrade (vs. standard trim & file)</li>
             <li>Blueberry facial & eye cleaning</li>
             <li>Flea & tick prevention treatment</li>
             <li>Paw balm & nail buff finish</li>
             <li>Anal gland expression (on request)</li>
             <li>De-shedding treatment for double coats</li>
-          </ul>
-        </div>
-
-        <!-- Monthly Membership -->
-        <div class="spa-card membership">
-          <div class="spa-icon membership-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                fill="white" />
-            </svg>
-          </div>
-          <h4 class="spa-title">VIP Membership</h4>
-
-          <ul class="spa-list">
-            <li>Free Pristine Spa Upgrade every 3rd booking</li>
-            <li>Priority booking & scheduling</li>
-            <li>10% off service charge</li>
-            <li>No cancellation fees</li>
-            <li>Perfect for multi-pet households</li>
           </ul>
         </div>
 
