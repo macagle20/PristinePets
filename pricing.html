@@ -532,62 +532,145 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
+      background: linear-gradient(135deg, rgba(14, 88, 255, 0.15) 0%, rgba(0, 188, 212, 0.15) 100%);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .calendly-modal-content {
-      background-color: #fefefe;
-      margin: 2% auto;
+      background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+      margin: 3% auto;
       padding: 0;
-      border: none;
-      border-radius: 16px;
+      border: 1px solid rgba(14, 88, 255, 0.1);
+      border-radius: 24px;
       width: 90%;
       max-width: 900px;
-      height: 90vh;
+      height: 85vh;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      box-shadow:
+        0 25px 80px rgba(14, 88, 255, 0.15),
+        0 10px 40px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
       overflow: hidden;
+      animation: slideIn 0.4s ease-out;
+    }
+
+    .calendly-modal-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
+      z-index: 1;
+    }
+
+    .calendly-modal-content::after {
+      content: 'Book Your Appointment';
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      z-index: 2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .calendly-close {
-      color: #aaa;
+      color: white;
       position: absolute;
       top: 16px;
       right: 20px;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
-      z-index: 1001;
-      background: rgba(255, 255, 255, 0.9);
+      z-index: 1002;
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .calendly-close:hover,
     .calendly-close:focus {
-      color: #000;
-      background: rgba(255, 255, 255, 1);
-      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--brand);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .calendly-widget-container {
       width: 100%;
       height: 100%;
-      border-radius: 16px;
+      border-radius: 24px;
       overflow: hidden;
+      padding-top: 60px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+    }
+
+    .calendly-widget-container .calendly-inline-widget {
+      border-radius: 0 0 24px 24px;
+      background: #ffffff;
     }
 
     @media (max-width: 768px) {
       .calendly-modal-content {
         width: 95%;
-        height: 95vh;
-        margin: 2.5% auto;
+        height: 90vh;
+        margin: 5% auto;
+        border-radius: 20px;
+      }
+
+      .calendly-modal-content::after {
+        font-size: 1rem;
+        left: 20px;
+        top: 18px;
+      }
+
+      .calendly-close {
+        top: 14px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+      }
+
+      .calendly-widget-container {
+        border-radius: 20px;
+      }
+
+      .calendly-widget-container .calendly-inline-widget {
+        border-radius: 0 0 20px 20px;
       }
     }
   </style>
