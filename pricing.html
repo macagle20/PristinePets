@@ -521,6 +521,75 @@
       white-space: nowrap;
       border: 0
     }
+
+    /* Calendly Modal */
+    .calendly-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .calendly-modal-content {
+      background-color: #fefefe;
+      margin: 2% auto;
+      padding: 0;
+      border: none;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 900px;
+      height: 90vh;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .calendly-close {
+      color: #aaa;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .calendly-close:hover,
+    .calendly-close:focus {
+      color: #000;
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.1);
+    }
+
+    .calendly-widget-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .calendly-modal-content {
+        width: 95%;
+        height: 95vh;
+        margin: 2.5% auto;
+      }
+    }
   </style>
 </head>
 
@@ -750,6 +819,17 @@
     </div>
   </section>
 
+  <!-- Calendly Modal -->
+  <div id="calendly-modal" class="calendly-modal">
+    <div class="calendly-modal-content">
+      <span class="calendly-close">&times;</span>
+      <div class="calendly-widget-container">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/macagle20?hide_gdpr_banner=1"
+          style="min-width:320px;height:100%;"></div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container foot">
       <div class="tiny">© <span id="year"></span> Pristine Pets LLC • All rights reserved</div>
@@ -765,14 +845,44 @@
       yearEl.textContent = new Date().getFullYear();
     }
 
-    // Temporary booking popup
+    // Calendly modal functionality
+    const modal = document.getElementById('calendly-modal');
+    const closeBtn = document.querySelector('.calendly-close');
+
+    // Open modal when book now buttons are clicked
     for (const btn of document.querySelectorAll('.book-now')) {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
-        alert('Coming soon');
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
       });
     }
+
+    // Close modal when X is clicked
+    closeBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    });
   </script>
+
+  <!-- Calendly widget script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 
 </html>
