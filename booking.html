@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Now | Pristine Pets — Mobile Pet Grooming</title>
+  <meta name="description" content="Schedule your Pristine Pets mobile grooming appointment." />
+  <meta name="format-detection" content="telephone=yes" />
+  <style>
+    :root{
+      --brand:#0e58ff; --brand-ink:#0a2a6a; --ink:#0d1b2a; --muted:#4f5d75;
+      --paper:#fff; --shadow:0 10px 30px rgba(10,42,106,.15); --maxw:1100px;
+      --radius:16px;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{
+      font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color:var(--ink);
+      background:linear-gradient(180deg,#f9fbff 0%,#fff 40%);
+      -webkit-font-smoothing:antialiased;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.85); border-bottom:1px solid #e8edff;
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;color:var(--brand-ink)}
+    .nav-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 16px;border-radius:14px;font-weight:700;background:var(--brand);color:#fff;box-shadow:var(--shadow)}
+    main{padding:32px 0 40px}
+    h1{margin:0 0 10px;color:var(--brand-ink)}
+    .card{
+      background:var(--paper); border:1px solid #e9edff; border-radius:calc(var(--radius) + 4px);
+      box-shadow:0 8px 24px rgba(10,42,106,.12); padding:18px;
+    }
+    .frame-wrap{
+      width:100%; height:85vh; min-height:700px; border-radius:18px; overflow:hidden; border:1px solid #e9edff;
+      box-shadow:0 8px 24px rgba(10,42,106,.12);
+    }
+    iframe{width:100%; height:100%; border:0}
+    .tiny{color:var(--muted);font-size:.9rem}
+    footer{padding:28px 0;color:#42506a}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true">
+          <path fill="currentColor"
+            d="M18 17c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5zm-7 2c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm22 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zM11 27c0-3.9 6-7 13-7s13 3.1 13 7c0 2.7-3.3 5-13 5s-13-2.3-13-5z"/>
+        </svg>
+        <span>Pristine Pets</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html" class="btn">← Back to Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Book Your Appointment</h1>
+      <p class="tiny">Secure booking powered by MoeGo.</p>
+
+      <div class="frame-wrap">
+        <iframe
+          src="https://booking.moego.pet/ol/PristinePets/book?utm_medium=embed"
+          title="Online booking" scrolling="no">
+        </iframe>
+      </div>
+
+      <p class="tiny" style="margin-top:10px">
+        Having trouble with the embed? <a class="tiny" href="https://booking.moego.pet/ol/PristinePets/book" target="_blank" rel="noopener">Open the booking page in a new tab</a>.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container tiny">© <span id="year"></span> Pristine Pets LLC • All rights reserved</div>
+  </footer>
+
+  <script>
+    // Year
+    const y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); }
+  </script>
+</body>
+</html>
