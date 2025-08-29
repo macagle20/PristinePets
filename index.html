@@ -444,261 +444,6 @@
       white-space: nowrap;
       border: 0
     }
-
-    /* Pricing components */
-    .pricing-grid {
-      display: grid;
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    @media (min-width: 760px) {
-      .pricing-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .pricing-card {
-      background: var(--paper);
-      border-radius: 24px;
-      border: 1px solid #e9edff;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(10, 42, 106, 0.12);
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(10, 42, 106, 0.18);
-    }
-
-    .pricing-header {
-      padding: 28px 28px 0;
-      text-align: center;
-    }
-
-    .pricing-header.popular {
-      background: linear-gradient(135deg, #d4a853 0%, #f4d03f 100%);
-      color: #fff;
-      position: relative;
-    }
-
-    .pricing-header.popular::after {
-      content: "Most Popular";
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #d4a853;
-      color: #fff;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(212, 168, 83, 0.4);
-      letter-spacing: 0.02em;
-    }
-
-    .service-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin: 0 0 8px;
-    }
-
-    .service-subtitle {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      margin: 0 0 16px;
-    }
-
-    .pricing-body {
-      padding: 0 24px 24px;
-    }
-
-    .price-table {
-      margin: 16px 0;
-      background: #f8faff;
-      border-radius: 16px;
-      padding: 12px;
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #e8edff;
-    }
-
-    .price-row:last-child {
-      border-bottom: none;
-    }
-
-    .size-label {
-      font-weight: 600;
-      color: var(--ink);
-      font-size: 1rem;
-    }
-
-    .price-value {
-      font-weight: 700;
-      color: var(--brand);
-      font-size: 1.2rem;
-    }
-
-    .service-description {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.4;
-      margin: 16px 0 0;
-      padding: 12px;
-      background: #f0f4ff;
-      border-radius: 12px;
-      border-left: 4px solid var(--brand);
-    }
-
-    /* Spa upgrades section */
-    .spa-section {
-      margin-top: 24px;
-      background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%);
-      border-radius: 24px;
-      padding: 32px 24px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .spa-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill="%23ffffff08"><circle cx="20" cy="20" r="3"/><circle cx="80" cy="20" r="3"/><circle cx="50" cy="50" r="3"/><circle cx="20" cy="80" r="3"/><circle cx="80" cy="80" r="3"/></g></svg>');
-      pointer-events: none;
-    }
-
-    .spa-section h2 {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: white;
-      margin: 0 0 12px;
-      font-size: 1.7rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .spa-section .spa-subtitle {
-      text-align: center;
-      color: rgba(255, 255, 255, 0.9);
-      margin: 0 0 24px;
-      font-size: 1rem;
-    }
-
-    .spa-grid {
-      display: grid;
-      gap: 20px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (min-width: 600px) {
-      .spa-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 24px auto 0;
-      }
-    }
-
-    .spa-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      color: var(--ink);
-    }
-
-    .spa-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .spa-icon {
-      width: 45px;
-      height: 45px;
-      background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 100%);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 12px rgba(139, 90, 43, 0.3);
-    }
-
-    .spa-icon.premium-icon {
-      background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #d4a853 100%);
-      box-shadow: 0 6px 16px rgba(107, 68, 35, 0.4);
-    }
-
-    .spa-price {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--brand);
-      margin: 8px 0 12px;
-      text-align: center;
-    }
-
-    .spa-price.premium-price {
-      color: #8b5a2b;
-      font-size: 1.5rem;
-    }
-
-    .spa-card.premium {
-      border: 2px solid rgba(139, 90, 43, 0.3);
-      box-shadow: 0 12px 40px rgba(139, 90, 43, 0.2);
-    }
-
-    .spa-card.premium:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(139, 90, 43, 0.25);
-    }
-
-    .spa-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--brand-ink);
-      margin: 0;
-      text-align: center;
-    }
-
-    .spa-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .spa-list li {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin: 8px 0;
-      position: relative;
-      padding-left: 20px;
-      line-height: 1.4;
-    }
-
-    .spa-list li::before {
-      content: "✨";
-      position: absolute;
-      left: 0;
-      font-size: 0.9rem;
-    }
   </style>
 </head>
 
@@ -717,7 +462,6 @@
       </div>
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
         <a href="#contact">Contact</a>
         <a href="booking.html" target="_blank" class="btn ">BOOK NOW!</a>
       </nav>
@@ -773,6 +517,7 @@
             <li>Ear cleaning, Teeth brushing, Nail Trimming</li>
             <li>Light brush-out & fragrance-free option</li>
           </ul>
+          <div class="price" style="margin-top: 8px;">Starting at $79</div>
           <span class="badge">Most popular for short coats</span>
         </article>
 
@@ -784,18 +529,21 @@
             <li>Detangle & de-mat (as needed)</li>
             <li>Coat-specific finishing spray</li>
           </ul>
+          <div class="price" style="margin-top: 8px;">Starting at $120</div>
           <span class="badge">Show-ready finish</span>
         </article>
 
         <article class="tile" aria-labelledby="spa">
           <h3 id="spa">Spa Add-Ons</h3>
           <ul class="list">
-            <li>De-shed treatment</li>
-            <li>Blueberry facial</li>
+            <li>De-shed treatment <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
+            <li>Blueberry facial <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
             <li>Pawdicure & nail buff</li>
-            <li>Anal gland expression (by request)</li>
-            <li>Specialty Shampoo & Conditioners</li>
-            <li>Nail Grinding</li>
+            <li>Anal gland expression (by request) <span class="price"
+                style="float: right; font-size: 0.9rem;">$10</span></li>
+            <li>Nail Grinding & Buffing <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
+            <li>Specialty Shampoo <span class="price" style="float: right; font-size: 0.9rem;">$5</span></li>
+            <li>Flea Bath <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
           </ul>
           <span class="badge">Premium extras</span>
         </article>
@@ -822,102 +570,26 @@
           <h4 style="margin:0 0 8px 0">Hours</h4>
           <p class="muted">Everyday 8:00a–6:00p</p>
         </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">Premium Spa Package</h3>
+          <p class="muted">Upgrade any service with our comprehensive spa treatment for the ultimate pampering
+            experience.</p>
+          <div class="price" style="margin: 16px 0; font-size: 1.3rem; text-align: center; color: var(--brand);">+$30
+          </div>
+          <ul class="list">
+            <li>Nail grinding upgrade</li>
+            <li>Blueberry facial & eye cleaning</li>
+            <li>Paw balm & nail buff finish</li>
+            <li>Anal gland expression (on request)</li>
+          </ul>
+          <span class="badge" style="margin-top: 12px;">Luxury upgrade</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="section" id="pricing" style="padding-top: 48px;">
-    <div class="container">
-      <h2 style="margin-top:0;color:var(--brand-ink)">Pricing</h2>
-      <p class="muted">Transparent, high-end care. Final pricing varies by breed, coat, and condition.</p>
 
-      <div class="pricing-grid">
-
-        <!-- Bath & Brush -->
-        <div class="pricing-card">
-          <div class="pricing-header"
-            style="background: linear-gradient(135deg, #4a9b8e 0%, #6bb7a8 100%); color: white;">
-            <h3 class="service-title">Bath & Brush</h3>
-            <p class="service-subtitle">Fresh & Clean Essentials</p>
-          </div>
-          <div class="pricing-body">
-            <div class="price-table">
-              <div class="price-row">
-                <span class="size-label">Small (0-22lbs)</span>
-                <span class="price-value">$79</span>
-              </div>
-              <div class="price-row">
-                <span class="size-label">Medium (23-57lbs)</span>
-                <span class="price-value">$89</span>
-              </div>
-              <div class="price-row">
-                <span class="size-label">Large (58-90lbs)</span>
-                <span class="price-value">$99</span>
-              </div>
-
-            </div>
-            <p class="service-description">
-              Bath, blow-dry, brush-out, ear cleaning, teeth brushing
-            </p>
-          </div>
-        </div>
-
-
-        <!-- Full Groom -->
-        <div class="pricing-card">
-          <div class="pricing-header"
-            style="background: linear-gradient(135deg, #4a9b8e 0%, #6bb7a8 100%); color: white;">
-            <h3 class="service-title">Full Groom</h3>
-            <p class="service-subtitle">Show Ready Perfection</p>
-          </div>
-          <div class="pricing-body">
-            <div class="price-table">
-              <div class="price-row">
-                <span class="size-label">Small</span>
-                <span class="price-value">$120</span>
-              </div>
-              <div class="price-row">
-                <span class="size-label">Medium</span>
-                <span class="price-value">$130</span>
-              </div>
-              <div class="price-row">
-                <span class="size-label">Large</span>
-                <span class="price-value">$140</span>
-              </div>
-
-            </div>
-            <p class="service-description">
-              All from <strong>Bath & Brush</strong> + face, paw, and sanitary trim + full-body haircut, nail trim &
-              file, ear cleaning, teeth brushing
-            </p>
-          </div>
-        </div>
-
-        <!-- Premium Spa Upgrade -->
-        <div class="pricing-card" style="grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
-          <div class="pricing-header"
-            style="background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%); color: white;">
-            <h3 class="service-title">Premium Spa Upgrade</h3>
-            <p class="service-subtitle">Luxury add-on package</p>
-          </div>
-          <div class="pricing-body">
-            <div class="price-table">
-              <div class="price-row">
-                <span class="size-label">All Sizes</span>
-                <span class="price-value">+$30</span>
-              </div>
-            </div>
-            <p class="service-description">
-              Nail grinding upgrade, blueberry facial & eye cleaning, paw balm & nail buff finish, anal gland expression
-              (on request)
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
 
 
