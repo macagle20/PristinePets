@@ -104,10 +104,7 @@
       color: var(--brand-ink)
     }
 
-    .brand svg {
-      width: 28px;
-      height: 28px
-    }
+
 
     .nav-links {
       display: flex;
@@ -290,36 +287,7 @@
       font-size: .85rem
     }
 
-    /* Gallery grid */
-    .gallery-grid {
-      display: grid;
-      gap: 16px
-    }
 
-    @media (min-width:760px) {
-      .gallery-grid {
-        grid-template-columns: repeat(3, 1fr)
-      }
-    }
-
-    .gallery-grid figure {
-      margin: 0;
-      background: var(--paper);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft)
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      display: block
-    }
-
-    .gallery-grid figcaption {
-      padding: 10px;
-      color: var(--muted);
-      font-size: .9rem
-    }
 
     /* Split sections */
     .split {
@@ -453,11 +421,9 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <!-- Paw + wordmark -->
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path fill="currentColor"
-            d="M18 17c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5zm-7 2c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm22 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zM11 27c0-3.9 6-7 13-7s13 3.1 13 7c0 2.7-3.3 5-13 5s-13-2.3-13-5z" />
-        </svg>
+        <!-- Company Logo -->
+        <img src="pp logo.jpg" alt="Pristine Pets Logo"
+          style="width: 28px; height: 28px; object-fit: cover; border-radius: 4px;">
         <span>Pristine Pets</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
@@ -571,19 +537,23 @@
           <p class="muted">Everyday 8:00a–6:00p</p>
         </div>
 
-        <div class="card">
-          <h3 style="margin-top:0">Premium Spa Package</h3>
-          <p class="muted">Upgrade any service with our comprehensive spa treatment for the ultimate pampering
+        <div class="card"
+          style="background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%); color: white;">
+          <h3 style="margin-top:0; color: white;">Premium Spa Package</h3>
+          <p style="color: rgba(255, 255, 255, 0.9);">Upgrade any service with our comprehensive spa treatment for the
+            ultimate pampering
             experience.</p>
-          <div class="price" style="margin: 16px 0; font-size: 1.3rem; text-align: center; color: var(--brand);">+$30
+          <div class="price" style="margin: 16px 0; font-size: 1.3rem; text-align: center; color: white;">+$30
           </div>
-          <ul class="list">
+          <ul class="list" style="color: rgba(255, 255, 255, 0.9);">
             <li>Nail grinding upgrade</li>
             <li>Blueberry facial & eye cleaning</li>
             <li>Paw balm & nail buff finish</li>
             <li>Anal gland expression (on request)</li>
           </ul>
-          <span class="badge" style="margin-top: 12px;">Luxury upgrade</span>
+          <span class="badge"
+            style="margin-top: 12px; background: rgba(255, 255, 255, 0.2); color: white; border-color: rgba(255, 255, 255, 0.3);">Luxury
+            upgrade</span>
         </div>
       </div>
     </div>
@@ -593,50 +563,12 @@
 
 
 
-  <!-- GALLERY -->
-  <section class="section" id="gallery" style="padding-top: 48px;">
-    <div class="container">
-      <h2 style="color:var(--brand-ink);margin-top:0">Gallery</h2>
-      <div class="gallery-grid" style="margin-top:16px">
-        <figure>
-          <img src="https://placedog.net/400/260?id=1" alt="Groomed dog posing" />
-          <figcaption>Fresh Cut</figcaption>
-        </figure>
-        <figure>
-          <img src="https://placedog.net/400/260?id=2" alt="Before and after grooming" />
-          <figcaption>Before &amp; After</figcaption>
-        </figure>
-        <figure>
-          <img src="https://placedog.net/400/260?id=3" alt="Happy dog after bath" />
-          <figcaption>Happy Client</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
-  <!-- REVIEWS -->
-  <section class="section" id="reviews" style="padding-top: 48px;">
-    <div class="container">
-      <h2 style="color:var(--brand-ink);margin-top:0">Testimonials</h2>
-      <div class="tiles" style="margin-top:16px">
-        <article class="tile">
-          <p style="margin:0">"Our golden retriever has never looked better. The convenience is unbeatable!"</p>
-          <p class="tiny">— Jamie L.</p>
-        </article>
-        <article class="tile">
-          <p style="margin:0">"Professional, punctual, and so kind to our anxious pup."</p>
-          <p class="tiny">— Mark R.</p>
-        </article>
-        <article class="tile">
-          <p style="margin:0">"The van is spotless and the groom was perfection. Highly recommend!"</p>
-          <p class="tiny">— Sierra K.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+
+
 
   <!-- FAQ -->
-  <section class="section" id="faq" style="padding-top: 48px;">
+  <section class="section" id="faq">
     <div class="container">
       <h2 style="color:var(--brand-ink);margin-top:0">FAQ</h2>
       <div class="tiles" style="margin-top:16px">
@@ -662,7 +594,7 @@
   </section>
 
   <!-- CONTACT / BOOKING -->
-  <section class="section" id="contact" style="padding-top: 48px;">
+  <section class="section" id="contact">
     <div class="container cta" id="booking" style="scroll-margin-top:90px">
       <div class="row">
         <h3>Ready to pamper your pet?</h3>
