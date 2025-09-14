@@ -160,22 +160,26 @@
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(-45deg, #0e58ff, #00bcd4, #1747ff, #0e58ff);
-      background-size: 400% 400%;
+      background:
+        linear-gradient(-45deg, rgba(14, 88, 255, 0.85), rgba(0, 188, 212, 0.75), rgba(23, 71, 255, 0.85), rgba(14, 88, 255, 0.85)),
+        url('images/Van.jpg');
+      background-size: 400% 400%, cover;
+      background-position: 0% 50%, center center;
+      background-repeat: no-repeat, no-repeat;
       animation: heroBg 15s ease infinite;
     }
 
     @keyframes heroBg {
       0% {
-        background-position: 0% 50%;
+        background-position: 0% 50%, center center;
       }
 
       50% {
-        background-position: 100% 50%;
+        background-position: 100% 50%, center center;
       }
 
       100% {
-        background-position: 0% 50%;
+        background-position: 0% 50%, center center;
       }
     }
 
@@ -489,7 +493,7 @@
     <div class="container">
       <div class="hero-card">
         <div class="eyebrow">Mobile Pet Grooming</div>
-        <h1>Luxury grooming at your curb.</h1>
+        <h1>Your pet's personal spa day, delivered.</h1>
         <p class="lead">We bring a spotless, fully equipped grooming van to your driveway, delivering a serene,
           one-on-one experience for pets and a frictionless day for you.</p>
 
@@ -554,7 +558,6 @@
           <ul class="list">
             <li>De-shed treatment <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
             <li>Blueberry facial <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
-            <li>Pawdicure & nail buff</li>
             <li>Anal gland expression (by request) <span class="price"
                 style="float: right; font-size: 0.9rem;">$10</span></li>
             <li>Nail Grinding & Buffing <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
