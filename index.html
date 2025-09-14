@@ -336,6 +336,55 @@
       color: var(--brand-ink)
     }
 
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    @media (min-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 980px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .gallery-item {
+      background: var(--paper);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e9edff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(10, 42, 106, 0.18);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brand-ink);
+      text-align: center;
+      background: linear-gradient(135deg, #f8faff 0%, #fff 100%);
+    }
+
     /* CTA bar */
     .cta {
       background: linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
@@ -422,12 +471,13 @@
     <div class="container nav-inner">
       <div class="brand">
         <!-- Company Logo -->
-        <img src="pp logo.jpg" alt="Pristine Pets Logo"
+        <img src="images/pp logo.jpg" alt="Pristine Pets Logo"
           style="width: 28px; height: 28px; object-fit: cover; border-radius: 4px;">
         <span>Pristine Pets</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
         <a href="booking.html" target="_blank" class="btn ">BOOK NOW!</a>
       </nav>
@@ -559,13 +609,33 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 style="margin-top:0;color:var(--brand-ink)">Our Work in Action</h2>
+      <p class="muted">See our mobile grooming van and some of the amazing transformations we've achieved for our furry
+        clients.</p>
 
-
-
-
-
-
-
+      <div class="gallery-grid" style="margin-top:24px">
+        <div class="gallery-item">
+          <img src="images/Van.jpg" alt="Pristine Pets Mobile Grooming Van" loading="lazy">
+          <div class="gallery-caption">Our state-of-the-art mobile grooming van</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/van 2.jpg" alt="Mobile Grooming Van Interior" loading="lazy">
+          <div class="gallery-caption">Fully equipped grooming station</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/image.jpg" alt="Professional Pet Grooming" loading="lazy">
+          <div class="gallery-caption">Professional grooming in progress</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/image1.jpg" alt="Happy Groomed Pet" loading="lazy">
+          <div class="gallery-caption">Another satisfied customer</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FAQ -->
   <section class="section" id="faq">
