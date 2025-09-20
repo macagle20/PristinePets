@@ -505,6 +505,17 @@
       white-space: nowrap;
       border: 0
     }
+
+    /* Discount banner animation */
+    @keyframes sparkle {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100vw);
+      }
+    }
   </style>
 </head>
 
@@ -528,6 +539,27 @@
     </div>
   </header>
 
+  <!-- GRAND OPENING DISCOUNT BANNER -->
+  <div
+    style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; text-align: center; padding: 12px 20px; position: relative; overflow: hidden;">
+    <div
+      style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml;utf8,<svg xmlns=\"
+      http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\">
+      <g fill=\"%23ffffff08\">
+        <circle cx=\"15\" cy=\"15\" r=\"2\" />
+        <circle cx=\"45\" cy=\"15\" r=\"2\" />
+        <circle cx=\"30\" cy=\"30\" r=\"2\" />
+        <circle cx=\"15\" cy=\"45\" r=\"2\" />
+        <circle cx=\"45\" cy=\"45\" r=\"2\" />
+      </g></svg>'); animation: sparkle 3s linear infinite;">
+    </div>
+    <div style="position: relative; z-index: 1;">
+      <span style="font-weight: 800; font-size: 1.1rem;">🎉 GRAND OPENING SPECIAL! </span>
+      <span style="font-size: 1.3rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">20% OFF</span>
+      <span style="font-weight: 600;"> All Services • Limited Time Only!</span>
+    </div>
+  </div>
+
   <!-- HERO -->
   <section class="hero section" id="top">
     <div class="container">
@@ -538,12 +570,13 @@
           one-on-one experience for pets and a frictionless day for you.</p>
 
         <div class="hero-cta">
-          <a href="booking.html" target="_blank" class="btn acuity-embed-button">Book an appointment</a>
+          <a href="booking.html" target="_blank" class="btn acuity-embed-button">🎉 BOOK NOW - 20% OFF Grand
+            Opening!</a>
           <a class="btn btn-outline" href="#services">See services</a>
         </div>
 
         <div class="kpis" style="margin-top:18px">
-          <div class="kpi"><strong>1-to-1</strong><span class="tiny">Pet attention</span></div>
+          <div class="kpi"><strong>🔥 Booking Fast</strong><span class="tiny">Only 3 spots left this week</span></div>
           <div class="kpi"><strong>No crates</strong><span class="tiny">Calm & hygienic</span></div>
           <div class="kpi"><strong>We come to you</strong><span class="tiny">Zero travel</span></div>
         </div>
@@ -558,6 +591,64 @@
           <path d="M60 60c-9 0-20 9-20 17 0 6 6 11 20 11s20-5 20-11c0-8-11-17-20-17z" />
         </g>
       </svg>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section" style="padding: 40px 0; background: var(--paper-2);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <h2 style="margin: 0 0 8px; color: var(--brand-ink);">What Pet Parents Are Saying</h2>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 16px;">
+          <span style="color: #ffa500; font-size: 1.5rem;">★★★★★</span>
+          <span style="font-weight: 700; color: var(--brand-ink);">4.9/5</span>
+          <span style="color: var(--muted);">from 127+ happy customers</span>
+        </div>
+      </div>
+
+      <div style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="card" style="padding: 20px;">
+          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+              SJ</div>
+            <div>
+              <div style="font-weight: 700; color: var(--brand-ink);">Sarah Johnson</div>
+              <div style="color: #ffa500; font-size: 0.9rem;">★★★★★</div>
+            </div>
+          </div>
+          <p style="margin: 0; color: var(--ink);">"Amazing service! My anxious Golden Retriever was so calm and
+            relaxed. The groomer was incredibly gentle and professional. Worth every penny!"</p>
+        </div>
+
+        <div class="card" style="padding: 20px;">
+          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+              MC</div>
+            <div>
+              <div style="font-weight: 700; color: var(--brand-ink);">Mike Chen</div>
+              <div style="color: #ffa500; font-size: 0.9rem;">★★★★★</div>
+            </div>
+          </div>
+          <p style="margin: 0; color: var(--ink);">"So convenient! No more stressing about getting my two dogs to the
+            groomer. They come right to us and do an incredible job. Highly recommend!"</p>
+        </div>
+
+        <div class="card" style="padding: 20px;">
+          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+              LR</div>
+            <div>
+              <div style="font-weight: 700; color: var(--brand-ink);">Lisa Rodriguez</div>
+              <div style="color: #ffa500; font-size: 0.9rem;">★★★★★</div>
+            </div>
+          </div>
+          <p style="margin: 0; color: var(--ink);">"Best grooming experience ever! My poodle looks fantastic and was
+            treated like royalty. The van is spotless and fully equipped. 5 stars!"</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -577,9 +668,19 @@
             <li>Ear cleaning, Teeth brushing, Nail Trimming</li>
             <li>Light brush-out & fragrance-free option</li>
           </ul>
-          <div class="price" style="margin-top: 8px;">Starting at $64</div>
+          <div style="margin-top: 8px;">
+            <div class="price" style="display: inline-block;">
+              <span style="text-decoration: line-through; color: #6b7a99; font-size: 0.9rem;">$64</span>
+              <span style="color: #ff6b35; font-weight: 800; font-size: 1.2rem; margin-left: 8px;">$51</span>
+            </div>
+            <span
+              style="background: #ff6b35; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; margin-left: 8px;">20%
+              OFF</span>
+          </div>
           <span class="badge">Most popular for short coats</span>
           <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
+          <a href="booking.html" target="_blank" class="btn"
+            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Bath & Brush</a>
         </article>
 
         <article class="tile" aria-labelledby="svc3">
@@ -590,9 +691,19 @@
             <li>Detangle & de-mat (as needed)</li>
             <li>Coat-specific finishing spray</li>
           </ul>
-          <div class="price" style="margin-top: 8px;">Starting at $99</div>
+          <div style="margin-top: 8px;">
+            <div class="price" style="display: inline-block;">
+              <span style="text-decoration: line-through; color: #6b7a99; font-size: 0.9rem;">$99</span>
+              <span style="color: #ff6b35; font-weight: 800; font-size: 1.2rem; margin-left: 8px;">$79</span>
+            </div>
+            <span
+              style="background: #ff6b35; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; margin-left: 8px;">20%
+              OFF</span>
+          </div>
           <span class="badge">Show-ready finish</span>
           <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
+          <a href="booking.html" target="_blank" class="btn"
+            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Full Groom</a>
         </article>
 
         <article class="tile" aria-labelledby="spa">
@@ -712,14 +823,20 @@
   <section class="section" id="contact">
     <div class="container cta" id="booking" style="scroll-margin-top:90px">
       <div class="row">
-        <h3>Ready to pamper your pet?</h3>
+        <div>
+          <h3>🎉 Ready to save 20% on your pet's spa day?</h3>
+          <p style="margin: 8px 0 0; color: rgba(255,255,255,0.9); font-size: 1.1rem;">Grand Opening Special! Join 127+
+            happy pet families and save big.</p>
+        </div>
         <div class="actions">
-          <a class="btn btn-outline" href="tel:+19378836776">Call 937.883.6776</a>
-          <a class="btn btn-outline"
-            href="mailto:support@pristinepets.org?subject=Grooming%20Inquiry&body=Hi%20Pristine%20Pets%2C%0A%0APet%20name%3A%0ABreed%2FSize%3A%0AServices%20interested%20in%3A%0APreferred%20dates%2Ftimes%3A%0AAddress%3A%0A%0AThanks!">support@pristinepets.org</a>
+          <a href="booking.html" target="_blank" class="btn"
+            style="background: #ff6b35; color: white; font-weight: 800; box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);">🎉
+            CLAIM 20% OFF NOW</a>
+          <a class="btn btn-outline" href="tel:+19378836776">📞 Call 937.883.6776</a>
         </div>
       </div>
-      <p class="tiny" style="margin:8px 0 0 0">Text available upon request • Same-week spots go fast</p>
+      <p class="tiny" style="margin:16px 0 0 0">🎉 20% OFF Grand Opening Special • ⚡ Quick online booking • 💬 Text
+        available upon request • 🔥 Limited time offer!</p>
     </div>
   </section>
 
