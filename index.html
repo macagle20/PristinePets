@@ -582,65 +582,28 @@
     </div>
   </section>
 
-  <!-- SOCIAL PROOF - COMMENTED OUT FOR NOW (REPLACE WITH REAL TESTIMONIALS LATER)
-  <!--
-  <section class="section" style="padding: 40px 0; background: var(--paper-2);">
+  <!-- REVIEWS SECTION -->
+  <section class="section" id="reviews" style="padding: 40px 0; background: var(--paper-2);">
     <div class="container">
       <div style="text-align: center; margin-bottom: 32px;">
         <h2 style="margin: 0 0 8px; color: var(--brand-ink);">What Pet Parents Are Saying</h2>
         <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 16px;">
           <span style="color: #ffa500; font-size: 1.5rem;">★★★★★</span>
           <span style="font-weight: 700; color: var(--brand-ink);">4.9/5</span>
-          <span style="color: var(--muted);">from 127+ happy customers</span>
+          <span style="color: var(--muted);">from happy customers</span>
         </div>
       </div>
 
-      <div style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        <div class="card" style="padding: 20px;">
-          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-            <div
-              style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
-              SJ</div>
-            <div>
-              <div style="font-weight: 700; color: var(--brand-ink);">Sarah Johnson</div>
-              <div style="color: #ffa500; font-size: 0.9rem;">★★★★★</div>
-            </div>
-          </div>
-          <p style="margin: 0; color: var(--ink);">"Amazing service! My anxious Golden Retriever was so calm and
-            relaxed. The groomer was incredibly gentle and professional. Worth every penny!"</p>
-        </div>
-
-        <div class="card" style="padding: 20px;">
-          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-            <div
-              style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
-              MC</div>
-            <div>
-              <div style="font-weight: 700; color: var(--brand-ink);">Mike Chen</div>
-              <div style="color: #ffa500; font-size: 0.9rem;">★★★★★</div>
-            </div>
-          </div>
-          <p style="margin: 0; color: var(--ink);">"So convenient! No more stressing about getting my two dogs to the
-            groomer. They come right to us and do an incredible job. Highly recommend!"</p>
-        </div>
-
-        <div class="card" style="padding: 20px;">
-          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-            <div
-              style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
-              LR</div>
-            <div>
-              <div style="font-weight: 700; color: var(--brand-ink);">Lisa Rodriguez</div>
-              <div style="color: #ffa500; font-size: 0.9rem;">★★★★★</div>
-            </div>
-          </div>
-          <p style="margin: 0; color: var(--ink);">"Best grooming experience ever! My poodle looks fantastic and was
-            treated like royalty. The van is spotless and fully equipped. 5 stars!"</p>
+      <div id="reviews-container"
+        style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <!-- Reviews will be loaded dynamically -->
+        <div class="reviews-loading"
+          style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
+          Loading reviews...
         </div>
       </div>
     </div>
   </section>
-  -->
 
   <!-- SERVICES -->
   <section class="section" id="services">
@@ -758,22 +721,11 @@
       <p class="muted">See our mobile grooming van and some of the amazing transformations we've achieved for our furry
         clients.</p>
 
-      <div class="gallery-grid" style="margin-top:24px">
-        <div class="gallery-item">
-          <img src="images/Van.jpg" alt="Pristine Pets Mobile Grooming Van" loading="lazy">
-          <div class="gallery-caption">Our state-of-the-art mobile grooming van</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/van 2.jpg" alt="Mobile Grooming Van Interior" loading="lazy">
-          <div class="gallery-caption">Fully equipped grooming station</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/image.jpg" alt="Professional Pet Grooming" loading="lazy">
-          <div class="gallery-caption">Professional grooming in progress</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/image1.jpg" alt="Happy Groomed Pet" loading="lazy">
-          <div class="gallery-caption">Another satisfied customer</div>
+      <div class="gallery-grid" id="dynamic-gallery" style="margin-top:24px">
+        <!-- Gallery items will be loaded dynamically -->
+        <div class="gallery-loading"
+          style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
+          Loading gallery...
         </div>
       </div>
     </div>
@@ -842,6 +794,139 @@
       yearEl.textContent = new Date().getFullYear();
     }
 
+    // Dynamic Gallery Loader
+    function loadGallery() {
+      // Define all images in the images folder (you'll need to update this list when adding new images)
+      const galleryImages = [
+        {
+          src: 'images/Van.jpg',
+          alt: 'Pristine Pets Mobile Grooming Van',
+          caption: 'Our state-of-the-art mobile grooming van'
+        },
+        {
+          src: 'images/van 2.jpg',
+          alt: 'Mobile Grooming Van Interior',
+          caption: 'Fully equipped grooming station'
+        },
+        {
+          src: 'images/image.jpg',
+          alt: 'Professional Pet Grooming',
+          caption: 'Professional grooming in progress'
+        },
+        {
+          src: 'images/image1.jpg',
+          alt: 'Happy Groomed Pet',
+          caption: 'Another satisfied customer'
+        },
+        {
+          src: 'images/IMG_3502.jpeg',
+          alt: 'Pet Grooming Session',
+          caption: 'Expert care for every pet'
+        },
+        {
+          src: 'images/IMG_3508.jpeg',
+          alt: 'Professional Pet Grooming',
+          caption: 'Gentle, professional service'
+        },
+        {
+          src: 'images/IMG_3530.jpeg',
+          alt: 'Pet Grooming Results',
+          caption: 'Beautiful grooming results'
+        },
+        {
+          src: 'images/IMG_3537.jpeg',
+          alt: 'Happy Pet After Grooming',
+          caption: 'Happy and clean!'
+        },
+        {
+          src: 'images/IMG_3545.jpeg',
+          alt: 'Pet Grooming Service',
+          caption: 'Quality care you can trust'
+        }
+      ];
+
+      const galleryContainer = document.getElementById('dynamic-gallery');
+      if (!galleryContainer) return;
+
+      // Clear loading message
+      galleryContainer.innerHTML = '';
+
+      // Create gallery items
+      galleryImages.forEach((image, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+
+        galleryItem.innerHTML = `
+          <img src="${image.src}" alt="${image.alt}" loading="lazy" 
+               onerror="this.parentElement.style.display='none'">
+          <div class="gallery-caption">${image.caption}</div>
+        `;
+
+        galleryContainer.appendChild(galleryItem);
+      });
+    }
+
+    // Load gallery when page loads
+    loadGallery();
+
+    // Dynamic Reviews Loader
+    function loadReviews() {
+      // Define reviews (you can add more by adding objects to this array)
+      const reviews = [
+        {
+          name: "Sarah Johnson",
+          initials: "SJ",
+          rating: 5,
+          text: "Amazing service! My anxious Golden Retriever was so calm and relaxed. The groomer was incredibly gentle and professional. Worth every penny!"
+        },
+        {
+          name: "Mike Chen",
+          initials: "MC",
+          rating: 5,
+          text: "So convenient! No more stressing about getting my two dogs to the groomer. They come right to us and do an incredible job. Highly recommend!"
+        },
+        {
+          name: "Lisa Rodriguez",
+          initials: "LR",
+          rating: 5,
+          text: "Best grooming experience ever! My poodle looks fantastic and was treated like royalty. The van is spotless and fully equipped. 5 stars!"
+        }
+      ];
+
+      const reviewsContainer = document.getElementById('reviews-container');
+      if (!reviewsContainer) return;
+
+      // Clear loading message
+      reviewsContainer.innerHTML = '';
+
+      // Create review cards
+      reviews.forEach((review, index) => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'card';
+        reviewCard.style.padding = '20px';
+
+        // Generate star rating
+        const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+        reviewCard.innerHTML = `
+          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+              ${review.initials}
+            </div>
+            <div>
+              <div style="font-weight: 700; color: var(--brand-ink);">${review.name}</div>
+              <div style="color: #ffa500; font-size: 0.9rem;">${stars}</div>
+            </div>
+          </div>
+          <p style="margin: 0; color: var(--ink);">"${review.text}"</p>
+        `;
+
+        reviewsContainer.appendChild(reviewCard);
+      });
+    }
+
+    // Load reviews when page loads
+    loadReviews();
 
     // Maintain focus/scroll target offset beneath sticky nav
     const nav = document.querySelector('.nav');
