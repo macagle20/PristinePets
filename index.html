@@ -418,15 +418,7 @@
       height: 200px;
       object-fit: cover;
       display: block;
-    }
-
-    .gallery-caption {
-      padding: 16px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--brand-ink);
-      text-align: center;
-      background: linear-gradient(135deg, #f8faff 0%, #fff 100%);
+      border-radius: 18px;
     }
 
     /* CTA bar */
@@ -796,52 +788,23 @@
 
     // Dynamic Gallery Loader
     function loadGallery() {
-      // Define all images in the images folder (you'll need to update this list when adding new images)
+      // Show only the best 4 images for faster loading
       const galleryImages = [
         {
           src: 'images/Van.jpg',
-          alt: 'Pristine Pets Mobile Grooming Van',
-          caption: 'Our state-of-the-art mobile grooming van'
+          alt: 'Pristine Pets Mobile Grooming Van'
         },
         {
           src: 'images/van 2.jpg',
-          alt: 'Mobile Grooming Van Interior',
-          caption: 'Fully equipped grooming station'
+          alt: 'Mobile Grooming Van Interior'
         },
         {
           src: 'images/image.jpg',
-          alt: 'Professional Pet Grooming',
-          caption: 'Professional grooming in progress'
+          alt: 'Professional Pet Grooming'
         },
         {
           src: 'images/image1.jpg',
-          alt: 'Happy Groomed Pet',
-          caption: 'Another satisfied customer'
-        },
-        {
-          src: 'images/IMG_3502.jpeg',
-          alt: 'Pet Grooming Session',
-          caption: 'Expert care for every pet'
-        },
-        {
-          src: 'images/IMG_3508.jpeg',
-          alt: 'Professional Pet Grooming',
-          caption: 'Gentle, professional service'
-        },
-        {
-          src: 'images/IMG_3530.jpeg',
-          alt: 'Pet Grooming Results',
-          caption: 'Beautiful grooming results'
-        },
-        {
-          src: 'images/IMG_3537.jpeg',
-          alt: 'Happy Pet After Grooming',
-          caption: 'Happy and clean!'
-        },
-        {
-          src: 'images/IMG_3545.jpeg',
-          alt: 'Pet Grooming Service',
-          caption: 'Quality care you can trust'
+          alt: 'Happy Groomed Pet'
         }
       ];
 
@@ -851,7 +814,7 @@
       // Clear loading message
       galleryContainer.innerHTML = '';
 
-      // Create gallery items
+      // Create gallery items (no captions for faster loading)
       galleryImages.forEach((image, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
@@ -859,7 +822,6 @@
         galleryItem.innerHTML = `
           <img src="${image.src}" alt="${image.alt}" loading="lazy" 
                onerror="this.parentElement.style.display='none'">
-          <div class="gallery-caption">${image.caption}</div>
         `;
 
         galleryContainer.appendChild(galleryItem);
@@ -874,22 +836,22 @@
       // Define reviews (you can add more by adding objects to this array)
       const reviews = [
         {
-          name: "Sarah Johnson",
-          initials: "SJ",
+          name: "Kelsey W",
+          initials: "KW",
           rating: 5,
-          text: "Amazing service! My anxious Golden Retriever was so calm and relaxed. The groomer was incredibly gentle and professional. Worth every penny!"
+          text: "Professional ✂️, Patient & caring 💗, Clean & tidy 🧼, Responsive ☎️, Austin was AMAZING with our fur-babies. Cannot wait for their next appointment with him!"
         },
         {
-          name: "Mike Chen",
-          initials: "MC",
+          name: "Tina L",
+          initials: "TL",
           rating: 5,
-          text: "So convenient! No more stressing about getting my two dogs to the groomer. They come right to us and do an incredible job. Highly recommend!"
+          text: "Austin was on time, professional, kind and our dog Monkey looks amazing!! The grooming was quick, and not having to take Monkey to a noisy groomer, have him in a cage for hours is totally worth the little extra charge (it's not much more at all from our usual groomer). We will for sure be back!! Thank you so so much!!"
         },
         {
-          name: "Lisa Rodriguez",
-          initials: "LR",
+          name: "Jacob Dupuis",
+          initials: "JD",
           rating: 5,
-          text: "Best grooming experience ever! My poodle looks fantastic and was treated like royalty. The van is spotless and fully equipped. 5 stars!"
+          text: "Had a great experience getting our dog Ellie groomed by Pristine Pets Mobile Pet Spa. Austin was right on time for our appointment, discussed what services were being done, and finished in a good amount of time. In the past, we've always taken our dog to a brick and mortar grooming place, but having them come to us was awesome and very convenient. We will definitely be using their services again, and I would highly recommend them to anyone."
         }
       ];
 
