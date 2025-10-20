@@ -117,22 +117,24 @@
       }
     }
 
-    /* Sticky top bar */
+    /* Sticky top bar - Modernized */
     .nav {
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: saturate(180%) blur(10px);
-      background: rgba(255, 255, 255, .8);
-      border-bottom: 1px solid #e8edff;
+      backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid rgba(14, 88, 255, .08);
+      box-shadow: 0 2px 16px rgba(10, 42, 106, .06);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0
+      gap: 20px;
+      padding: 16px 0;
+      transition: padding .3s ease;
     }
 
     .brand {
@@ -140,26 +142,62 @@
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      letter-spacing: .2px;
-      color: var(--brand-ink)
+      letter-spacing: .3px;
+      color: var(--brand-ink);
+      font-size: 1.1rem;
+      transition: transform .2s ease;
     }
 
+    .brand:hover {
+      transform: scale(1.02);
+    }
 
+    .brand img {
+      transition: transform .3s ease;
+    }
+
+    .brand:hover img {
+      transform: rotate(-5deg) scale(1.05);
+    }
 
     .nav-links {
       display: flex;
-      gap: 18px;
+      gap: 8px;
       align-items: center;
       flex-wrap: wrap
     }
 
-    .nav-links a {
-      padding: 8px 10px;
-      border-radius: 10px
+    .nav-links a:not(.btn) {
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all .2s ease;
+      color: var(--muted);
     }
 
-    .nav-links a:hover {
-      background: #eef3ff
+    .nav-links a:not(.btn):hover {
+      background: linear-gradient(135deg, #eef3ff 0%, #e8edff 100%);
+      color: var(--brand);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a:not(.btn)::after {
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 24px;
+      height: 2px;
+      background: var(--brand);
+      border-radius: 2px;
+      transition: transform .2s ease;
+    }
+
+    .nav-links a:not(.btn):hover::after {
+      transform: translateX(-50%) scaleX(1);
     }
 
     /* Mobile nav: only show Book Now button */
@@ -287,9 +325,33 @@
       gap: 16px
     }
 
-    @media (min-width:760px) {
+    @media (min-width:600px) {
       .tiles {
-        grid-template-columns: repeat(3, 1fr)
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (min-width:980px) {
+      .tiles {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    /* For the services section specifically with 4 items */
+    #services .tiles {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width:600px) {
+      #services .tiles {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (min-width:1200px) {
+      #services .tiles {
+        grid-template-columns: repeat(4, 1fr)
       }
     }
 
@@ -524,6 +586,7 @@
       </div>
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
+        <a href="#promotions">Promotions</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
         <a href="booking.html" target="_blank" class="btn ">BOOK NOW!</a>
@@ -531,13 +594,22 @@
     </div>
   </header>
 
-  <!-- GRAND OPENING DISCOUNT BANNER -->
+  <!-- GRAND OPENING COUNTDOWN BANNER -->
   <div
-    style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; text-align: center; padding: 12px 20px; position: relative; overflow: hidden;">
+    style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; text-align: center; padding: 14px 20px; position: relative; overflow: hidden;">
     <div style="position: relative; z-index: 1;">
-      <span style="font-weight: 800; font-size: 1.1rem;">🎉 GRAND OPENING SPECIAL! </span>
-      <span style="font-size: 1.3rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">20% OFF</span>
-      <span style="font-weight: 600;"> All Services • Limited Time Only!</span>
+      <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 6px;">🎉 GRAND OPENING SPECIAL!</div>
+      <div style="display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <span style="font-size: 1.3rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">20% OFF</span>
+        <span style="font-weight: 600; font-size: 1rem;">All Services • Ends in:</span>
+        <div id="countdown"
+          style="display: flex; gap: 8px; font-weight: 700; font-size: 1.1rem; font-family: monospace;">
+          <div><span id="days">0</span>d</div>
+          <div><span id="hours">00</span>h</div>
+          <div><span id="minutes">00</span>m</div>
+          <div><span id="seconds">00</span>s</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -574,24 +646,52 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section class="section" id="reviews" style="padding: 40px 0; background: var(--paper-2);">
+  <!-- PROMOTIONS SECTION -->
+  <section class="section" id="promotions"
+    style="padding: 48px 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 32px;">
-        <h2 style="margin: 0 0 8px; color: var(--brand-ink);">What Pet Parents Are Saying</h2>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 16px;">
-          <span style="color: #ffa500; font-size: 1.5rem;">★★★★★</span>
-          <span style="font-weight: 700; color: var(--brand-ink);">5/5</span>
-          <span style="color: var(--muted);">from happy customers</span>
-        </div>
-      </div>
+      <h2 style="margin-top:0; color:var(--brand-ink); text-align: center;">💰 Special Promotions</h2>
+      <p class="muted" style="text-align: center; margin-bottom: 32px;">Share the love and save together!</p>
 
-      <div id="reviews-container"
-        style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        <!-- Reviews will be loaded dynamically -->
-        <div class="reviews-loading"
-          style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
-          Loading reviews...
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="card"
+          style="background: linear-gradient(135deg, #0e58ff 0%, #1747ff 100%); color: white; padding: 32px; box-shadow: 0 12px 32px rgba(14, 88, 255, 0.25);">
+          <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 12px;">🎁</div>
+            <h3 style="margin: 0 0 12px 0; color: white; font-size: 1.8rem;">Refer a Friend & You Both Save!</h3>
+            <div
+              style="background: rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 24px; margin: 20px 0; backdrop-filter: blur(10px);">
+              <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; align-items: center;">
+                <div style="text-align: center; flex: 1; min-width: 150px;">
+                  <div
+                    style="font-size: 2.5rem; font-weight: 900; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                    $10 OFF</div>
+                  <div style="font-weight: 600; margin-top: 4px;">For You</div>
+                </div>
+                <div style="font-size: 2rem; opacity: 0.7;">+</div>
+                <div style="text-align: center; flex: 1; min-width: 150px;">
+                  <div
+                    style="font-size: 2.5rem; font-weight: 900; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                    $10 OFF</div>
+                  <div style="font-weight: 600; margin-top: 4px;">For Your Friend</div>
+                </div>
+              </div>
+            </div>
+            <p style="margin: 16px 0 0 0; font-size: 1rem; line-height: 1.6; opacity: 0.95;">
+              When you refer a friend to Pristine Pets, you'll both receive <strong>$10 off</strong> your next grooming
+              service!
+              It's our way of saying thank you for spreading the word about premium mobile pet grooming.
+            </p>
+            <div style="margin-top: 24px;">
+              <a href="tel:+19378836776" class="btn"
+                style="background: white; color: var(--brand); font-weight: 800; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);">
+                📞 Call to Claim Your Referral Bonus
+              </a>
+            </div>
+            <p class="tiny" style="margin: 16px 0 0 0; opacity: 0.85;">
+              ✨ No limit on referrals! • 💝 Share with unlimited friends • 🎉 Everyone saves!
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -659,6 +759,34 @@
             <li>Flea Bath <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
           </ul>
           <span class="badge">Premium extras</span>
+        </article>
+
+        <article class="tile" aria-labelledby="vip"
+          style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border: 2px solid #f4a300; position: relative; overflow: hidden;">
+          <div
+            style="position: absolute; top: -10px; right: -10px; background: #ff6b35; color: white; padding: 4px 32px; transform: rotate(45deg); font-weight: 800; font-size: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            VIP</div>
+          <h3 id="vip" style="color: #8b5a2b; margin-top: 0;">👑 VIP Membership</h3>
+          <p style="color: #8b5a2b; font-weight: 600; margin-bottom: 12px;">Exclusive benefits for recurring customers
+          </p>
+          <ul class="list" style="color: #5a3a1a;">
+            <li><strong>$15 OFF</strong> every visit</li>
+            <li><strong>Guaranteed booking</strong> priority</li>
+            <li><strong>Pristine Spa upgrade</strong> every other visit</li>
+            <li>Exclusive member perks</li>
+            <li>Flexible scheduling</li>
+          </ul>
+          <div
+            style="margin-top: 12px; padding: 12px; background: rgba(139, 90, 43, 0.1); border-radius: 12px; border: 1px solid rgba(139, 90, 43, 0.2);">
+            <div style="font-weight: 700; color: #8b5a2b; font-size: 0.9rem; margin-bottom: 4px;">Monthly Commitment
+              Required</div>
+            <div style="color: #5a3a1a; font-size: 0.85rem;">Schedule recurring grooming & save on every visit</div>
+          </div>
+          <span class="badge"
+            style="background: rgba(139, 90, 43, 0.15); color: #8b5a2b; border-color: rgba(139, 90, 43, 0.3); margin-top: 12px;">Best
+            value for regulars</span>
+          <a href="booking.html" target="_blank" class="btn"
+            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem; background: #8b5a2b;">Join VIP Program</a>
         </article>
       </div>
 
@@ -769,7 +897,28 @@
     </div>
   </section>
 
+  <!-- REVIEWS SECTION (Moved to bottom, smaller) -->
+  <section class="section" id="reviews" style="padding: 32px 0; background: var(--paper-2);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 6px; color: var(--brand-ink); font-size: 1.4rem;">What Pet Parents Are Saying</h3>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 6px; margin-bottom: 12px;">
+          <span style="color: #ffa500; font-size: 1.1rem;">★★★★★</span>
+          <span style="font-weight: 600; color: var(--brand-ink); font-size: 0.9rem;">5/5</span>
+          <span style="color: var(--muted); font-size: 0.9rem;">from happy customers</span>
+        </div>
+      </div>
 
+      <div id="reviews-container"
+        style="display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <!-- Reviews will be loaded dynamically -->
+        <div class="reviews-loading"
+          style="grid-column: 1 / -1; text-align: center; padding: 30px; color: var(--muted); font-size: 0.9rem;">
+          Loading reviews...
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container foot">
@@ -785,6 +934,37 @@
     if (yearEl) {
       yearEl.textContent = new Date().getFullYear();
     }
+
+    // Countdown Timer to October 31, 2025 at 11:59 PM
+    function updateCountdown() {
+      const endDate = new Date('2025-10-31T23:59:59').getTime();
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<div style="color: white; font-weight: 700;">Offer Ended!</div>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      if (daysEl) daysEl.textContent = days;
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Update countdown immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
     // Dynamic Gallery Loader
     function loadGallery() {
@@ -861,26 +1041,26 @@
       // Clear loading message
       reviewsContainer.innerHTML = '';
 
-      // Create review cards
+      // Create review cards (smaller version)
       reviews.forEach((review, index) => {
         const reviewCard = document.createElement('div');
         reviewCard.className = 'card';
-        reviewCard.style.padding = '20px';
+        reviewCard.style.padding = '16px';
 
         // Generate star rating
         const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
 
         reviewCard.innerHTML = `
-          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+          <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.75rem;">
               ${review.initials}
             </div>
             <div>
-              <div style="font-weight: 700; color: var(--brand-ink);">${review.name}</div>
-              <div style="color: #ffa500; font-size: 0.9rem;">${stars}</div>
+              <div style="font-weight: 700; color: var(--brand-ink); font-size: 0.9rem;">${review.name}</div>
+              <div style="color: #ffa500; font-size: 0.8rem;">${stars}</div>
             </div>
           </div>
-          <p style="margin: 0; color: var(--ink);">"${review.text}"</p>
+          <p style="margin: 0; color: var(--ink); font-size: 0.9rem; line-height: 1.5;">"${review.text}"</p>
         `;
 
         reviewsContainer.appendChild(reviewCard);
