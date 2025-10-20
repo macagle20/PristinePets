@@ -442,47 +442,6 @@
       color: var(--brand-ink)
     }
 
-    /* Gallery */
-    .gallery-grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    @media (min-width: 600px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 980px) {
-      .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .gallery-item {
-      background: var(--paper);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid #e9edff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(10, 42, 106, 0.18);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      border-radius: 18px;
-    }
-
     /* CTA bar */
     .cta {
       background: linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
@@ -587,7 +546,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#promotions">Promotions</a>
-        <a href="#gallery">Gallery</a>
+        <a href="gallery.html">Gallery</a>
         <a href="#contact">Contact</a>
         <a href="booking.html" target="_blank" class="btn ">BOOK NOW!</a>
       </nav>
@@ -646,6 +605,140 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 style="margin-top:0;color:var(--brand-ink)">Signature Services</h2>
+      <p class="muted">Transparent, high-end care. Final pricing varies by breed, coat, and condition. “Starting at”
+        reflects small/short-coat guidance.</p>
+
+      <div class="tiles" style="margin-top:18px">
+        <article class="tile" aria-labelledby="svc1">
+          <h3 id="svc1">Bath &amp; Brush</h3>
+          <ul class="list">
+            <li>Full Body Shampoo & condition</li>
+            <li>Hand blow-dry (no cage dryers)</li>
+            <li>Ear cleaning, Teeth brushing, Nail Trimming</li>
+            <li>Light brush-out & fragrance-free option</li>
+          </ul>
+          <div class="price" style="margin-top: 8px;">
+            Starting at <span style="text-decoration: line-through; color: #6b7a99;">$64</span>
+            <span style="color: #ff6b35; font-weight: 800; margin-left: 4px;">$51</span>
+            <span
+              style="background: #ff6b35; color: white; padding: 2px 6px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-left: 6px;">20%
+              OFF</span>
+          </div>
+          <span class="badge">Most popular for short coats</span>
+          <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
+          <a href="booking.html" target="_blank" class="btn"
+            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Bath & Brush</a>
+        </article>
+
+        <article class="tile" aria-labelledby="svc3">
+          <h3 id="svc3">Full Groom (All-Over Trim)</h3>
+          <ul class="list">
+            <li>Everything in Bath & Brush</li>
+            <li>Custom clip/scissor style</li>
+            <li>Detangle & de-mat (as needed)</li>
+            <li>Coat-specific finishing spray</li>
+          </ul>
+          <div class="price" style="margin-top: 8px;">
+            Starting at <span style="text-decoration: line-through; color: #6b7a99;">$99</span>
+            <span style="color: #ff6b35; font-weight: 800; margin-left: 4px;">$79</span>
+            <span
+              style="background: #ff6b35; color: white; padding: 2px 6px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-left: 6px;">20%
+              OFF</span>
+          </div>
+          <span class="badge">Show-ready finish</span>
+          <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
+          <a href="booking.html" target="_blank" class="btn"
+            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Full Groom</a>
+        </article>
+
+        <article class="tile" aria-labelledby="spa"
+          style="background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%); color: white;">
+          <h3 id="spa" style="color: white; margin-top: 0;">✨ Spa Services & Add-Ons</h3>
+          <p style="color: rgba(255, 255, 255, 0.95); font-weight: 600; margin-bottom: 12px;">Individual add-ons or
+            upgrade to the complete Pristine Spa Package</p>
+
+          <div
+            style="background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 16px; margin-bottom: 12px; backdrop-filter: blur(10px);">
+            <div style="font-weight: 700; margin-bottom: 8px; font-size: 1rem;">Pristine Spa Package — $30</div>
+            <ul class="list" style="color: rgba(255, 255, 255, 0.9); margin: 0; font-size: 0.9rem;">
+              <li>Nail grinding & buffing</li>
+              <li>Blueberry facial & eye cleaning</li>
+              <li>Paw balm & nail buff finish</li>
+              <li>Anal gland expression</li>
+              <li>Specialty shampoo</li>
+            </ul>
+          </div>
+
+          <div style="font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Or choose individual add-ons:</div>
+          <ul class="list" style="color: rgba(255, 255, 255, 0.9); font-size: 0.85rem;">
+            <li>De-shed treatment <span style="float: right;">$30</span></li>
+            <li>Blueberry facial <span style="float: right;">$10</span></li>
+            <li>Anal gland expression <span style="float: right;">$10</span></li>
+            <li>Nail grinding & buffing <span style="float: right;">$10</span></li>
+            <li>Specialty shampoo <span style="float: right;">$5</span></li>
+            <li>Flea bath <span style="float: right;">$30</span></li>
+          </ul>
+          <span class="badge"
+            style="margin-top: 12px; background: rgba(255, 255, 255, 0.2); color: white; border-color: rgba(255, 255, 255, 0.3);">Luxury
+            upgrades</span>
+        </article>
+
+        <article class="tile" aria-labelledby="vip"
+          style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border: 2px solid #f4a300; position: relative; overflow: hidden;">
+          <div
+            style="position: absolute; top: -10px; right: -10px; background: #ff6b35; color: white; padding: 4px 32px; transform: rotate(45deg); font-weight: 800; font-size: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            VIP</div>
+          <h3 id="vip" style="color: #8b5a2b; margin-top: 0;">👑 VIP Membership</h3>
+          <p style="color: #8b5a2b; font-weight: 600; margin-bottom: 12px;">Exclusive benefits for recurring customers
+          </p>
+          <ul class="list" style="color: #5a3a1a;">
+            <li><strong>$15 OFF</strong> every visit</li>
+            <li><strong>Guaranteed booking</strong> priority</li>
+            <li><strong>Pristine Spa upgrade</strong> every other visit</li>
+            <li>Exclusive member perks</li>
+            <li>Flexible scheduling</li>
+          </ul>
+          <div
+            style="margin-top: 12px; padding: 12px; background: rgba(139, 90, 43, 0.1); border-radius: 12px; border: 1px solid rgba(139, 90, 43, 0.2);">
+            <div style="font-weight: 700; color: #8b5a2b; font-size: 0.9rem; margin-bottom: 4px;">Monthly Commitment
+              Required</div>
+            <div style="color: #5a3a1a; font-size: 0.85rem;">Schedule recurring grooming & save on every visit</div>
+          </div>
+          <span class="badge"
+            style="background: rgba(139, 90, 43, 0.15); color: #8b5a2b; border-color: rgba(139, 90, 43, 0.3); margin-top: 12px;">Best
+            value for regulars</span>
+          <a href="booking.html" target="_blank" class="btn"
+            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem; background: #8b5a2b;">Join VIP Program</a>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:26px">
+        <h3 style="margin-top:0">What's included & Service Area</h3>
+        <p class="muted">Every service includes professional-grade shampoo & conditioner, gentle handling, ear
+          cleaning, teeth brushing, and complete van sanitization—delivering a premium grooming
+          experience. Your pet gets calm, 1-to-1 attention in a meticulously clean environment with certified groomers
+          using gentle, fear-free handling.</p>
+        <div class="kpis">
+          <div class="kpi"><strong>Sanitized</strong><span class="tiny">Between visits</span></div>
+          <div class="kpi"><strong>Insured</strong><span class="tiny">Professionally covered</span></div>
+          <div class="kpi"><strong>On time</strong><span class="tiny">Text ahead</span></div>
+        </div>
+        <div style="height:14px"></div>
+        <h4 style="margin:0 0 8px 0">Service Area</h4>
+        <p class="muted">Huber Heights • Vandalia • Beavercreek • Englewood • Dayton • Enon • Fairborn</p>
+        <p class="tiny">Not sure if you're in range? <a href="#contact">Ask us</a>—we can often accommodate nearby.
+        </p>
+        <div style="height:14px"></div>
+        <h4 style="margin:0 0 8px 0">Hours</h4>
+        <p class="muted">Everyday 8:00a–6:00p</p>
+      </div>
+    </div>
+  </section>
+
   <!-- PROMOTIONS SECTION -->
   <section class="section" id="promotions"
     style="padding: 48px 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
@@ -697,156 +790,15 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
+  <!-- GALLERY LINK -->
+  <section class="section" style="padding: 48px 0; background: var(--paper-2);">
     <div class="container">
-      <h2 style="margin-top:0;color:var(--brand-ink)">Signature Services</h2>
-      <p class="muted">Transparent, high-end care. Final pricing varies by breed, coat, and condition. “Starting at”
-        reflects small/short-coat guidance.</p>
-
-      <div class="tiles" style="margin-top:18px">
-        <article class="tile" aria-labelledby="svc1">
-          <h3 id="svc1">Bath &amp; Brush</h3>
-          <ul class="list">
-            <li>Full Body Shampoo & condition</li>
-            <li>Hand blow-dry (no cage dryers)</li>
-            <li>Ear cleaning, Teeth brushing, Nail Trimming</li>
-            <li>Light brush-out & fragrance-free option</li>
-          </ul>
-          <div class="price" style="margin-top: 8px;">
-            Starting at <span style="text-decoration: line-through; color: #6b7a99;">$64</span>
-            <span style="color: #ff6b35; font-weight: 800; margin-left: 4px;">$51</span>
-            <span
-              style="background: #ff6b35; color: white; padding: 2px 6px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-left: 6px;">20%
-              OFF</span>
-          </div>
-          <span class="badge">Most popular for short coats</span>
-          <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
-          <a href="booking.html" target="_blank" class="btn"
-            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Bath & Brush</a>
-        </article>
-
-        <article class="tile" aria-labelledby="svc3">
-          <h3 id="svc3">Full Groom (All-Over Trim)</h3>
-          <ul class="list">
-            <li>Everything in Bath & Brush</li>
-            <li>Custom clip/scissor style</li>
-            <li>Detangle & de-mat (as needed)</li>
-            <li>Coat-specific finishing spray</li>
-          </ul>
-          <div class="price" style="margin-top: 8px;">
-            Starting at <span style="text-decoration: line-through; color: #6b7a99;">$99</span>
-            <span style="color: #ff6b35; font-weight: 800; margin-left: 4px;">$79</span>
-            <span
-              style="background: #ff6b35; color: white; padding: 2px 6px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-left: 6px;">20%
-              OFF</span>
-          </div>
-          <span class="badge">Show-ready finish</span>
-          <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
-          <a href="booking.html" target="_blank" class="btn"
-            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Full Groom</a>
-        </article>
-
-        <article class="tile" aria-labelledby="spa">
-          <h3 id="spa">Spa Add-Ons</h3>
-          <ul class="list">
-            <li>De-shed treatment <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
-            <li>Blueberry facial <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
-            <li>Anal gland expression (by request) <span class="price"
-                style="float: right; font-size: 0.9rem;">$10</span></li>
-            <li>Nail Grinding & Buffing <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
-            <li>Specialty Shampoo <span class="price" style="float: right; font-size: 0.9rem;">$5</span></li>
-            <li>Flea Bath <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
-          </ul>
-          <span class="badge">Premium extras</span>
-        </article>
-
-        <article class="tile" aria-labelledby="vip"
-          style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border: 2px solid #f4a300; position: relative; overflow: hidden;">
-          <div
-            style="position: absolute; top: -10px; right: -10px; background: #ff6b35; color: white; padding: 4px 32px; transform: rotate(45deg); font-weight: 800; font-size: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-            VIP</div>
-          <h3 id="vip" style="color: #8b5a2b; margin-top: 0;">👑 VIP Membership</h3>
-          <p style="color: #8b5a2b; font-weight: 600; margin-bottom: 12px;">Exclusive benefits for recurring customers
-          </p>
-          <ul class="list" style="color: #5a3a1a;">
-            <li><strong>$15 OFF</strong> every visit</li>
-            <li><strong>Guaranteed booking</strong> priority</li>
-            <li><strong>Pristine Spa upgrade</strong> every other visit</li>
-            <li>Exclusive member perks</li>
-            <li>Flexible scheduling</li>
-          </ul>
-          <div
-            style="margin-top: 12px; padding: 12px; background: rgba(139, 90, 43, 0.1); border-radius: 12px; border: 1px solid rgba(139, 90, 43, 0.2);">
-            <div style="font-weight: 700; color: #8b5a2b; font-size: 0.9rem; margin-bottom: 4px;">Monthly Commitment
-              Required</div>
-            <div style="color: #5a3a1a; font-size: 0.85rem;">Schedule recurring grooming & save on every visit</div>
-          </div>
-          <span class="badge"
-            style="background: rgba(139, 90, 43, 0.15); color: #8b5a2b; border-color: rgba(139, 90, 43, 0.3); margin-top: 12px;">Best
-            value for regulars</span>
-          <a href="booking.html" target="_blank" class="btn"
-            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem; background: #8b5a2b;">Join VIP Program</a>
-        </article>
-      </div>
-
-      <div class="split" style="margin-top:26px">
-        <div class="card">
-          <h3 style="margin-top:0">What's included & Service Area</h3>
-          <p class="muted">Every service includes professional-grade shampoo & conditioner, gentle handling, ear
-            cleaning, teeth brushing, and complete van sanitization—delivering a premium grooming
-            experience. Your pet gets calm, 1-to-1 attention in a meticulously clean environment with certified groomers
-            using gentle, fear-free handling.</p>
-          <div class="kpis">
-            <div class="kpi"><strong>Sanitized</strong><span class="tiny">Between visits</span></div>
-            <div class="kpi"><strong>Insured</strong><span class="tiny">Professionally covered</span></div>
-            <div class="kpi"><strong>On time</strong><span class="tiny">Text ahead</span></div>
-          </div>
-          <div style="height:14px"></div>
-          <h4 style="margin:0 0 8px 0">Service Area</h4>
-          <p class="muted">Huber Heights • Vandalia • Beavercreek • Englewood • Dayton • Enon • Fairborn</p>
-          <p class="tiny">Not sure if you're in range? <a href="#contact">Ask us</a>—we can often accommodate nearby.
-          </p>
-          <div style="height:14px"></div>
-          <h4 style="margin:0 0 8px 0">Hours</h4>
-          <p class="muted">Everyday 8:00a–6:00p</p>
-        </div>
-
-        <div class="card"
-          style="background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%); color: white;">
-          <h3 style="margin-top:0; color: white;">Pristine Spa Package</h3>
-          <p style="color: rgba(255, 255, 255, 0.9);">Upgrade any service with our comprehensive spa treatment for the
-            ultimate pampering
-            experience.</p>
-          <ul class="list" style="color: rgba(255, 255, 255, 0.9); margin-bottom: 16px;">
-            <li><strong>Nail grinding upgrade</strong></li>
-            <li><strong>Blueberry facial & eye cleaning</strong></li>
-            <li><strong>Paw balm & nail buff finish</strong></li>
-            <li><strong>Anal gland expression (on request)</strong></li>
-            <li><strong>Specialty shampoo</strong></li>
-          </ul>
-          <div class="price" style="margin: 8px 0 0 0; font-size: 1.1rem; color: white; text-align: right;">+$30</div>
-          <span class="badge"
-            style="margin-top: 12px; background: rgba(255, 255, 255, 0.2); color: white; border-color: rgba(255, 255, 255, 0.3);">Luxury
-            upgrade</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="section" id="gallery">
-    <div class="container">
-      <h2 style="margin-top:0;color:var(--brand-ink)">Our Work in Action</h2>
-      <p class="muted">See our mobile grooming van and some of the amazing transformations we've achieved for our furry
-        clients.</p>
-
-      <div class="gallery-grid" id="dynamic-gallery" style="margin-top:24px">
-        <!-- Gallery items will be loaded dynamically -->
-        <div class="gallery-loading"
-          style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
-          Loading gallery...
-        </div>
+      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">📸</div>
+        <h2 style="margin: 0 0 12px 0; color: var(--brand-ink);">See Our Work</h2>
+        <p class="muted" style="margin-bottom: 24px;">Check out our mobile grooming van and the amazing transformations
+          we've achieved for our furry clients.</p>
+        <a href="gallery.html" class="btn" style="font-size: 1rem;">View Gallery</a>
       </div>
     </div>
   </section>
@@ -965,51 +917,6 @@
     // Update countdown immediately and then every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    // Dynamic Gallery Loader
-    function loadGallery() {
-      // Show only the best 4 dog images for faster loading
-      const galleryImages = [
-        {
-          src: 'images/IMG_3502.jpeg',
-          alt: 'Beautifully Groomed Dog'
-        },
-        {
-          src: 'images/IMG_3508.jpeg',
-          alt: 'Professional Pet Grooming Results'
-        },
-        {
-          src: 'images/IMG_3530.jpeg',
-          alt: 'Happy Dog After Grooming'
-        },
-        {
-          src: 'images/IMG_3537.jpeg',
-          alt: 'Expert Pet Grooming Service'
-        }
-      ];
-
-      const galleryContainer = document.getElementById('dynamic-gallery');
-      if (!galleryContainer) return;
-
-      // Clear loading message
-      galleryContainer.innerHTML = '';
-
-      // Create gallery items (no captions for faster loading)
-      galleryImages.forEach((image, index) => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-
-        galleryItem.innerHTML = `
-          <img src="${image.src}" alt="${image.alt}" loading="lazy" 
-               onerror="this.parentElement.style.display='none'">
-        `;
-
-        galleryContainer.appendChild(galleryItem);
-      });
-    }
-
-    // Load gallery when page loads
-    loadGallery();
 
     // Dynamic Reviews Loader
     function loadReviews() {
