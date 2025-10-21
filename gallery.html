@@ -214,6 +214,8 @@
             box-shadow: var(--shadow-soft);
             border: 1px solid #e9edff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            aspect-ratio: 1.4;
         }
 
         .gallery-item:hover {
@@ -223,10 +225,45 @@
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             display: block;
             border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item img.loaded {
+            opacity: 1;
+        }
+
+        /* Skeleton loader for images */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    #f0f0f0 0%,
+                    #e8e8e8 20%,
+                    #f0f0f0 40%,
+                    #f0f0f0 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 18px;
+        }
+
+        .gallery-item img.loaded~ ::before {
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         footer {
@@ -335,16 +372,27 @@
             // Clear loading message
             galleryContainer.innerHTML = '';
 
-            // Create gallery items (no captions for faster loading)
+            // Create gallery items with smooth loading
             galleryImages.forEach((image, index) => {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
 
-                galleryItem.innerHTML = `
-          <img src="${image.src}" alt="${image.alt}" loading="lazy" 
-               onerror="this.parentElement.style.display='none'">
-        `;
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.alt;
+                img.loading = 'lazy';
 
+                // Add loaded class when image finishes loading
+                img.onload = function () {
+                    this.classList.add('loaded');
+                };
+
+                // Hide if image fails to load
+                img.onerror = function () {
+                    galleryItem.style.display = 'none';
+                };
+
+                galleryItem.appendChild(img);
                 galleryContainer.appendChild(galleryItem);
             });
         }
