@@ -45,9 +45,10 @@
             font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             color: var(--ink);
             background:
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 100 100"><g fill="%230e58ff0D"><circle cx="20" cy="20" r="8"/><circle cx="60" cy="15" r="8"/><circle cx="15" cy="60" r="8"/><circle cx="65" cy="65" r="8"/><path d="M40 40c-8 0-16 8-16 16 0 5 5 11 16 11s16-6 16-11c0-8-8-16-16-16z"/></g></svg>'),
-                linear-gradient(180deg, #f9fbff 0%, #fff 40%);
-            background-repeat: repeat, no-repeat;
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 43, 168, 0.06) 0%, transparent 45%),
+                linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%, #f8fafc 100%);
+            background-repeat: no-repeat, no-repeat, no-repeat;
             background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
@@ -79,15 +80,26 @@
             }
         }
 
-        /* Sticky top bar - Modernized */
+        /* Halloween-themed Navigation */
         .nav {
             position: sticky;
             top: 0;
             z-index: 50;
-            backdrop-filter: saturate(180%) blur(20px);
-            background: rgba(255, 255, 255, .92);
-            border-bottom: 1px solid rgba(14, 88, 255, .08);
-            box-shadow: 0 2px 16px rgba(10, 42, 106, .06);
+            backdrop-filter: saturate(200%) blur(24px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.15);
+            box-shadow:
+                0 2px 16px rgba(10, 42, 106, 0.08),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom-color: rgba(255, 107, 53, 0.2);
+            box-shadow:
+                0 4px 20px rgba(10, 42, 106, 0.12),
+                0 0 0 1px rgba(255, 255, 255, 0.7);
         }
 
         .nav-inner {
@@ -170,57 +182,100 @@
 
         .btn {
             display: inline-block;
-            padding: 14px 18px;
-            border-radius: 14px;
+            padding: 16px 24px;
+            border-radius: 50px;
             font-weight: 700;
-            background: var(--brand);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, var(--brand), #1747ff);
             color: #fff;
-            box-shadow: var(--shadow);
-            transition: transform .06s ease, box-shadow .2s ease
+            border: none;
+            box-shadow:
+                0 4px 15px rgba(14, 88, 255, 0.3),
+                0 2px 4px rgba(10, 42, 106, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
         .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 14px 34px rgba(14, 88, 255, .25)
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+                0 8px 25px rgba(14, 88, 255, 0.4),
+                0 4px 12px rgba(10, 42, 106, 0.15);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: translateY(0) scale(0.98);
         }
 
         .muted {
             color: var(--muted)
         }
 
-        /* Gallery */
+        /* Modern Gallery Design - Optimized for 17 images */
         .gallery-grid {
             display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            margin-top: 32px;
         }
 
         @media (min-width: 600px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
 
-        @media (min-width: 980px) {
+        @media (min-width: 800px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (min-width: 1100px) {
             .gallery-grid {
                 grid-template-columns: repeat(4, 1fr);
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .gallery-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (min-width: 1800px) {
+            .gallery-grid {
+                grid-template-columns: repeat(6, 1fr);
             }
         }
 
         .gallery-item {
-            background: var(--paper);
-            border-radius: 18px;
             overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid #e9edff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            aspect-ratio: 1.4;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(10, 42, 106, 0.18);
+            aspect-ratio: 1.2;
         }
 
         .gallery-item img {
@@ -228,47 +283,15 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            border-radius: 18px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .gallery-item img.loaded {
-            opacity: 1;
-        }
 
-        /* Skeleton loader for images */
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg,
-                    #f0f0f0 0%,
-                    #e8e8e8 20%,
-                    #f0f0f0 40%,
-                    #f0f0f0 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 18px;
-        }
-
-        .gallery-item img.loaded~ ::before {
-            display: none;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
-        }
 
         footer {
             padding: 40px 0;
-            color: #42506a
+            color: #42506a;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(14, 88, 255, 0.03));
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
         }
 
         .foot {
@@ -313,21 +336,50 @@
     </header>
 
     <!-- GALLERY -->
-    <section class="section" id="gallery">
-        <div class="container">
-            <h1 style="margin-top:0;color:var(--brand-ink)">Our Work in Action</h1>
-            <p class="muted">See our mobile grooming van and some of the amazing transformations we've achieved for our
-                furry
-                clients.</p>
+    <section class="section" id="gallery" style="background:
+        radial-gradient(circle at 25% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 80%, rgba(139, 43, 168, 0.08) 0%, transparent 45%),
+        linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%, #f8fafc 100%);
+        position: relative;">
+        <!-- Subtle Halloween pattern -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.05; background-image:
+            radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.4) 0%, transparent 12px),
+            radial-gradient(circle at 80% 70%, rgba(139, 43, 168, 0.3) 0%, transparent 10px),
+            radial-gradient(circle at 50% 40%, rgba(14, 88, 255, 0.25) 0%, transparent 8px);
+            background-size: 150px 150px, 180px 180px, 200px 200px;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; margin-bottom: 48px;">
+
+                <h1 style="margin: 0 0 16px 0; color: var(--brand-ink); font-size: 2.5rem; font-weight: 800;">🎃 Our
+                    Work</h1>
+
+            </div>
 
             <div class="gallery-grid" id="dynamic-gallery" style="margin-top:24px">
                 <!-- Gallery items will be loaded dynamically -->
                 <div class="gallery-loading"
                     style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
-                    Loading gallery...
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📷</div>
+                    <div style="font-size: 1.1rem; color: var(--brand-ink); margin-bottom: 8px;">Loading Gallery</div>
+                    <div style="font-size: 0.9rem;">Finding all your pet grooming photos...</div>
                 </div>
             </div>
         </div>
+
+        <!-- Halloween floating elements -->
+        <div
+            style="position: absolute; top: 12%; right: 8%; font-size: 2.8rem; opacity: 0.15; color: var(--brand); animation: float 6s ease-in-out infinite;">
+            🧼</div>
+        <div
+            style="position: absolute; top: 68%; left: 6%; font-size: 2.5rem; opacity: 0.12; color: #ff6b35; animation: float 4s ease-in-out infinite reverse;">
+            💧</div>
+        <div
+            style="position: absolute; bottom: 15%; right: 12%; font-size: 2.2rem; opacity: 0.1; color: #8b2ba8; animation: float 5s ease-in-out infinite;">
+            ✨</div>
+        <div
+            style="position: absolute; top: 35%; left: 15%; font-size: 2rem; opacity: 0.08; color: var(--brand); animation: float 7s ease-in-out infinite;">
+            🐾</div>
     </section>
 
     <footer>
@@ -344,35 +396,172 @@
             yearEl.textContent = new Date().getFullYear();
         }
 
-        // Dynamic Gallery Loader
-        function loadGallery() {
-            // Show only the best 4 dog images for faster loading
-            const galleryImages = [
-                {
-                    src: 'images/IMG_3502.jpeg',
-                    alt: 'Beautifully Groomed Dog'
-                },
-                {
-                    src: 'images/IMG_3508.jpeg',
-                    alt: 'Professional Pet Grooming Results'
-                },
-                {
-                    src: 'images/IMG_3530.jpeg',
-                    alt: 'Happy Dog After Grooming'
-                },
-                {
-                    src: 'images/IMG_3537.jpeg',
-                    alt: 'Expert Pet Grooming Service'
+        // Efficient Gallery Loader - Loads images in batches
+        async function loadGallery() {
+            const galleryContainer = document.getElementById('dynamic-gallery');
+            if (!galleryContainer) return;
+
+            // Show initial loading state
+            galleryContainer.innerHTML = `
+                <div class="gallery-loading" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--muted);">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📷</div>
+                    <div style="font-size: 1.1rem; color: var(--brand-ink); margin-bottom: 8px;">Scanning Images</div>
+                    <div style="font-size: 0.9rem;">Finding your pet grooming photos...</div>
+                </div>
+            `;
+
+            try {
+                // Use the more reliable fallback method first
+                const allImages = await loadImagesWithFallback();
+                console.log(`Gallery: Found ${allImages.length} images:`, allImages.map(img => img.src));
+
+                if (allImages.length === 0) {
+                    throw new Error('No images found');
                 }
+
+                // Show ALL images at once - no batching needed for 17 images
+                displayGallery(allImages);
+
+                // Show completion message
+                const loadingDiv = document.querySelector('.gallery-loading');
+                if (loadingDiv) {
+                    loadingDiv.innerHTML = `
+                        <div style="font-size: 3rem; margin-bottom: 16px;">✨</div>
+                        <div style="font-size: 1.1rem; color: var(--brand); margin-bottom: 8px;">Gallery Complete!</div>
+                        <div style="color: var(--muted);">${allImages.length} pet grooming photos loaded successfully</div>
+                    `;
+
+                    setTimeout(() => {
+                        loadingDiv.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingDiv.style.display = 'none';
+                        }, 300);
+                    }, 1500);
+                }
+
+            } catch (e) {
+                console.error('Gallery loading failed:', e);
+                // Show error state
+                galleryContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--muted);">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">😞</div>
+                        <h3>Gallery Not Available</h3>
+                        <p>Unable to load images. Please check that your images are in the images folder.</p>
+                        <button onclick="loadGallery()" style="margin-top: 16px; padding: 12px 24px; background: var(--brand); color: white; border: none; border-radius: 50px; cursor: pointer;">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+
+        // Fallback function using Image objects (more reliable)
+        function checkImageExists(imageSrc) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = imageSrc;
+            });
+        }
+
+        // Simplified and reliable image loading
+        async function loadImagesWithFallback() {
+            const images = [];
+
+            // All images from the folder listing (van.svg first as featured image)
+            const allFolderImages = [
+                'van.svg', // Featured van image first
+                '1.JPG', '2.JPG', '3.JPG', '4.JPG', '5.jpg', '6.jpeg', '7.jpg', '8.jpg',
+                '1122132799505299819.JPG', '1251905004423680317.JPG', '2142961056478385723.JPG',
+                '4631433308148136587.JPG', '5945010096408968877.JPG', '6114537634836500992.JPG',
+                '6826922714800626958.JPG', 'Bjorn.jpg', 'IMG_3508.jpeg'
             ];
 
+            // Check all images from folder listing
+            for (const imageName of allFolderImages) {
+                try {
+                    if (await checkImageExists(`images/${imageName}`)) {
+                        const baseName = imageName.split('.')[0];
+                        images.push({
+                            src: `images/${imageName}`,
+                            alt: `${baseName.charAt(0).toUpperCase() + baseName.slice(1)} - Pet Grooming`
+                        });
+                        console.log(`✅ Found image: ${imageName}`);
+                    } else {
+                        console.log(`❌ Missing image: ${imageName}`);
+                    }
+                } catch (e) {
+                    console.log(`❓ Error checking ${imageName}:`, e.message);
+                }
+            }
+
+            // If we found images, sort them and return
+            if (images.length > 0) {
+                images.sort((a, b) => {
+                    const aMatch = a.src.match(/(\d+)/);
+                    const bMatch = b.src.match(/(\d+)/);
+
+                    if (aMatch && bMatch) {
+                        return parseInt(aMatch[1]) - parseInt(bMatch[1]);
+                    } else if (aMatch) {
+                        return -1;
+                    } else if (bMatch) {
+                        return 1;
+                    } else {
+                        return a.src.localeCompare(b.src);
+                    }
+                });
+                console.log(`Gallery: Successfully loaded ${images.length} images`);
+                return images;
+            }
+
+            // If no priority images found, try numbered 1-20 as additional check
+            console.log('Checking for additional numbered images...');
+            for (let i = 1; i <= 20 && images.length < 20; i++) {
+                for (const ext of imageExtensions) {
+                    const imageName = `${i}${ext}`;
+                    try {
+                        if (await checkImageExists(`images/${imageName}`)) {
+                            images.push({
+                                src: `images/${imageName}`,
+                                alt: `Pet Grooming Image ${i}`
+                            });
+                            console.log(`✅ Found additional image: ${imageName}`);
+                            break; // Found one, move to next number
+                        }
+                    } catch (e) {
+                        // Image doesn't exist, continue
+                    }
+                }
+            }
+
+            console.log(`Final count: ${images.length} images found`);
+            return images;
+        }
+
+        // Note: No longer using batch loading - all images load at once
+
+        // Function to display the gallery
+        function displayGallery(galleryImages) {
             const galleryContainer = document.getElementById('dynamic-gallery');
             if (!galleryContainer) return;
 
             // Clear loading message
             galleryContainer.innerHTML = '';
 
-            // Create gallery items with smooth loading
+            if (galleryImages.length === 0) {
+                galleryContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--muted);">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">😞</div>
+                        <h3>No Images Found</h3>
+                        <p>Check that your images are in the images folder and try refreshing the page.</p>
+                        <button onclick="loadGallery()" style="margin-top: 16px; padding: 12px 24px; background: var(--brand); color: white; border: none; border-radius: 50px; cursor: pointer;">Try Again</button>
+                    </div>
+                `;
+                return;
+            }
+
+            // Create gallery items
             galleryImages.forEach((image, index) => {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
@@ -382,11 +571,6 @@
                 img.alt = image.alt;
                 img.loading = 'lazy';
 
-                // Add loaded class when image finishes loading
-                img.onload = function () {
-                    this.classList.add('loaded');
-                };
-
                 // Hide if image fails to load
                 img.onerror = function () {
                     galleryItem.style.display = 'none';
@@ -395,6 +579,44 @@
                 galleryItem.appendChild(img);
                 galleryContainer.appendChild(galleryItem);
             });
+
+            // Update loading message to show completion
+            const loadingDiv = document.querySelector('.gallery-loading');
+            if (loadingDiv) {
+                loadingDiv.innerHTML = `
+                    <div style="font-size: 3rem; margin-bottom: 16px;">✨</div>
+                    <div style="font-size: 1.1rem; color: var(--brand); margin-bottom: 8px;">Gallery Ready!</div>
+                    <div style="color: var(--muted);">${galleryImages.length} pet grooming photos loaded successfully</div>
+                `;
+
+                setTimeout(() => {
+                    loadingDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingDiv.style.display = 'none';
+                    }, 300);
+                }, 1000);
+            }
+        }
+
+        // Modern Navbar Scroll Effect
+        const nav = document.querySelector('.nav');
+        if (nav) {
+            function updateNavOnScroll() {
+                const scrolled = window.scrollY > 50;
+                nav.classList.toggle('scrolled', scrolled);
+            }
+
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(updateNavOnScroll);
+                    ticking = true;
+                    setTimeout(() => { ticking = false; }, 10);
+                }
+            }
+
+            window.addEventListener('scroll', requestTick, { passive: true });
+            updateNavOnScroll();
         }
 
         // Load gallery when page loads
