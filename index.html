@@ -117,205 +117,893 @@
       }
     }
 
-    /* Sticky top bar - Modernized */
+    /* Modern Navbar Design */
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: saturate(180%) blur(20px);
-      background: rgba(255, 255, 255, .92);
-      border-bottom: 1px solid rgba(14, 88, 255, .08);
-      box-shadow: 0 2px 16px rgba(10, 42, 106, .06);
+      z-index: 100;
+      backdrop-filter: saturate(200%) blur(24px);
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid rgba(14, 88, 255, 0.1);
+      box-shadow:
+        0 1px 3px rgba(10, 42, 106, 0.08),
+        0 4px 20px rgba(10, 42, 106, 0.04);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom-color: rgba(14, 88, 255, 0.15);
+      box-shadow:
+        0 4px 12px rgba(10, 42, 106, 0.1),
+        0 8px 32px rgba(10, 42, 106, 0.06);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 16px 0;
-      transition: padding .3s ease;
+      gap: 24px;
+      padding: 18px 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled .nav-inner {
+      padding: 14px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: .3px;
+      gap: 14px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
       color: var(--brand-ink);
-      font-size: 1.1rem;
-      transition: transform .2s ease;
+      font-size: 1.15rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .brand::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--brand), var(--accent));
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .brand:hover {
-      transform: scale(1.02);
+      transform: translateY(-1px);
+      color: var(--brand);
+    }
+
+    .brand:hover::before {
+      opacity: 1;
     }
 
     .brand img {
-      transition: transform .3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(14, 88, 255, 0.15);
     }
 
     .brand:hover img {
-      transform: rotate(-5deg) scale(1.05);
+      transform: rotate(5deg) scale(1.08);
+      box-shadow: 0 4px 16px rgba(14, 88, 255, 0.25);
     }
 
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
 
     .nav-links a:not(.btn) {
-      padding: 10px 16px;
-      border-radius: 12px;
+      padding: 12px 18px;
+      border-radius: 16px;
       font-weight: 600;
       font-size: 0.95rem;
       position: relative;
-      transition: all .2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       color: var(--muted);
+      text-decoration: none;
+      overflow: hidden;
     }
 
-    .nav-links a:not(.btn):hover {
-      background: linear-gradient(135deg, #eef3ff 0%, #e8edff 100%);
-      color: var(--brand);
-      transform: translateY(-1px);
+    .nav-links a:not(.btn)::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(14, 88, 255, 0.1), rgba(139, 43, 168, 0.08));
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .nav-links a:not(.btn)::after {
       content: '';
       position: absolute;
-      bottom: 6px;
+      bottom: 8px;
       left: 50%;
       transform: translateX(-50%) scaleX(0);
-      width: 24px;
+      width: 20px;
       height: 2px;
-      background: var(--brand);
-      border-radius: 2px;
-      transition: transform .2s ease;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      border-radius: 1px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links a:not(.btn):hover {
+      color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14, 88, 255, 0.15);
+    }
+
+    .nav-links a:not(.btn):hover::before {
+      opacity: 1;
     }
 
     .nav-links a:not(.btn):hover::after {
       transform: translateX(-50%) scaleX(1);
     }
 
-    /* Mobile nav: only show Book Now button */
-    @media (max-width:600px) {
+    /* Enhanced Mobile Navigation */
+    @media (max-width: 768px) {
       .nav-links a:not(.btn) {
-        display: none
+        display: none;
+      }
+
+      .nav-inner {
+        padding: 16px 0;
+        gap: 16px;
+      }
+
+      .brand {
+        font-size: 1.05rem;
+        gap: 10px;
+      }
+
+      .brand img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .btn {
+        padding: 14px 20px;
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-inner {
+        padding: 14px 0;
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: 1rem;
+        gap: 8px;
+      }
+
+      .brand img {
+        width: 22px;
+        height: 22px;
+      }
+
+      .btn {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+      .nav-links a:not(.btn):hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .nav-links a:not(.btn):active {
+        transform: scale(0.95);
+        background: rgba(14, 88, 255, 0.1);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px) scale(1.01);
+      }
+
+      .btn:active {
+        transform: translateY(1px) scale(0.98);
       }
     }
 
     .btn {
       display: inline-block;
-      padding: 14px 18px;
-      border-radius: 14px;
+      padding: 16px 24px;
+      border-radius: 50px;
       font-weight: 700;
-      background: var(--brand);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, var(--brand), #1747ff);
       color: #fff;
-      box-shadow: var(--shadow);
-      transition: transform .06s ease, box-shadow .2s ease
+      border: none;
+      box-shadow:
+        0 4px 15px rgba(14, 88, 255, 0.3),
+        0 2px 4px rgba(10, 42, 106, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 34px rgba(14, 88, 255, .25)
+      transform: translateY(-2px) scale(1.02);
+      box-shadow:
+        0 8px 25px rgba(14, 88, 255, 0.4),
+        0 4px 12px rgba(10, 42, 106, 0.15);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.98);
     }
 
     .btn-outline {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       color: var(--brand-ink);
-      border: 2px solid #e2e8ff;
-      box-shadow: var(--shadow-soft)
+      border: 2px solid rgba(14, 88, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(10, 42, 106, 0.08);
+      font-weight: 600;
     }
 
     .btn-outline:hover {
-      border-color: #bfcfff
+      background: rgba(14, 88, 255, 0.1);
+      border-color: var(--brand);
+      color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14, 88, 255, 0.2);
     }
 
-    /* Hero */
+    /* Unified Halloween Hero Section */
     .hero {
       position: relative;
       overflow: hidden;
-      background:
-        linear-gradient(-45deg, rgba(14, 88, 255, 0.95), rgba(0, 188, 212, 0.4), rgba(23, 71, 255, 0.95), rgba(14, 88, 255, 0.95)),
-        url('images/Van.jpg');
-      background-size: 400% 400%, cover;
-      background-position: 0% 50%, center center;
-      background-repeat: no-repeat, no-repeat;
-      animation: heroBg 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #ff6b35 0%, #8b2ba8 50%, #2d1b69 100%);
     }
 
-    @keyframes heroBg {
-      0% {
-        background-position: 0% 50%, center center;
+    /* Halloween-themed overlays */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        /* Floating Halloween elements */
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 40% 15%, rgba(255, 107, 53, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 60% 85%, rgba(139, 43, 168, 0.18) 0%, transparent 35%);
+      background-size: 300px 300px, 250px 250px, 200px 200px, 280px 280px;
+      animation: halloweenFloat 20s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        /* Subtle Halloween patterns */
+        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 15%),
+        radial-gradient(circle at 70% 60%, rgba(255, 107, 53, 0.1) 0%, transparent 12%),
+        radial-gradient(circle at 50% 20%, rgba(139, 43, 168, 0.06) 0%, transparent 18%);
+      background-size: 150px 150px, 120px 120px, 180px 180px;
+      animation: halloweenFloat 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes halloweenFloat {
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+
+      25% {
+        transform: translate(8px, -12px) rotate(1deg);
+        opacity: 0.8;
       }
 
       50% {
-        background-position: 100% 50%, center center;
+        transform: translate(-6px, 8px) rotate(-0.5deg);
+        opacity: 0.9;
       }
 
-      100% {
-        background-position: 0% 50%, center center;
+      75% {
+        transform: translate(12px, 4px) rotate(0.8deg);
+        opacity: 0.85;
       }
     }
 
     .hero .container {
-      display: grid;
-      gap: 28px;
-      place-items: center;
-      max-width: 1300px
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      max-width: 1400px;
+      padding: 40px 20px;
     }
 
-    .hero-card {
-      background: var(--paper);
-      border-radius: calc(var(--radius) + 4px);
-      padding: 28px 28px 26px;
-      box-shadow: var(--shadow)
+    .hero-content {
+      position: relative;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-radius: 32px;
+      padding: 48px 48px 44px;
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      max-width: 700px;
+      text-align: center;
+      transform: translateY(-20px);
+      animation: heroCardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes heroCardFloat {
+
+      0%,
+      100% {
+        transform: translateY(-20px);
+      }
+
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100vh;
+        padding: 20px 0;
+      }
+
+      .hero-content {
+        padding: 32px 24px 28px;
+        border-radius: 20px;
+        transform: translateY(-5px);
+        margin: 0 16px;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(2rem, 6vw + 1rem, 2.8rem);
+      }
+
+      .hero-content .lead {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content {
+        padding: 28px 20px 24px;
+        border-radius: 16px;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(1.8rem, 7vw + 1rem, 2.5rem);
+        margin-bottom: 20px;
+      }
+
+      .hero-content .lead {
+        font-size: 1rem;
+        margin-bottom: 28px;
+      }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+
+      .hero-content,
+      .hero::before,
+      .hero::after,
+      .hero .container::before,
+      .hero .container::after,
+      .kpi {
+        animation: none !important;
+        transform: none !important;
+      }
+
+      .hero {
+        animation: none !important;
+      }
     }
 
     .eyebrow {
-      font-weight: 800;
+      font-weight: 700;
       color: var(--brand);
       text-transform: uppercase;
-      letter-spacing: .14em;
-      font-size: .8rem
+      letter-spacing: .12em;
+      font-size: .875rem;
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
     }
 
-    h1 {
-      font-size: clamp(2rem, 2.8vw + 1.2rem, 3.25rem);
-      line-height: 1.08;
-      margin: 10px 0 14px;
-      color: var(--brand-ink)
+    .eyebrow::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      border-radius: 2px;
     }
 
-    .lead {
-      font-size: 1.05rem;
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+      line-height: 1.1;
+      margin: 0 0 24px 0;
+      color: var(--brand-ink);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      background: linear-gradient(135deg, var(--brand-ink), var(--brand));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-content .lead {
+      font-size: 1.25rem;
       color: var(--muted);
-      max-width: 60ch
+      max-width: 55ch;
+      margin: 0 auto 32px auto;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     .hero-cta {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-top: 22px
+      margin-top: 40px;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Decorative paw pattern (SVG data URI) */
-    .paws {
+    .hero-cta .btn {
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta .btn::before {
+      content: '';
       position: absolute;
-      inset: auto -120px -140px auto;
-      opacity: .12;
-      pointer-events: none;
-      transform: rotate(-8deg) scale(1.05)
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
     }
 
-    @media (min-width:980px) {
-      .paws {
-        right: -80px;
-        bottom: -100px
+    .hero-cta .btn:hover::before {
+      left: 100%;
+    }
+
+    .hero-cta .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(14, 88, 255, 0.3);
+      color: var(--brand-ink);
+      font-weight: 600;
+    }
+
+    .hero-cta .btn-outline:hover {
+      background: rgba(14, 88, 255, 0.1);
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14, 88, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .hero-cta {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 28px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Modern decorative elements */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 15%;
+      right: 8%;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(14, 88, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 5s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 0.1;
+      }
+    }
+
+    /* Floating particles */
+    .hero .container::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: particle1 8s linear infinite;
+    }
+
+    .hero .container::after {
+      content: '';
+      position: absolute;
+      top: 70%;
+      right: 20%;
+      width: 6px;
+      height: 6px;
+      background: rgba(14, 88, 255, 0.4);
+      border-radius: 50%;
+      animation: particle2 10s linear infinite;
+    }
+
+    @keyframes particle1 {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes particle2 {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(-30px);
+        opacity: 0;
+      }
+    }
+
+    /* Halloween Floating Elements */
+    .geometric-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.2;
+      animation: shapeFloat 8s ease-in-out infinite;
+    }
+
+    /* Halloween-themed floating elements */
+    .shape-1 {
+      top: 12%;
+      right: 10%;
+      font-size: 3.5rem;
+      color: rgba(255, 107, 53, 0.8);
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      bottom: 28%;
+      left: 6%;
+      font-size: 3rem;
+      color: rgba(139, 43, 168, 0.7);
+      animation-delay: -2s;
+    }
+
+    .shape-3 {
+      top: 48%;
+      right: 4%;
+      font-size: 2.8rem;
+      color: rgba(255, 255, 255, 0.9);
+      animation-delay: -4s;
+    }
+
+    .shape-4 {
+      top: 72%;
+      left: 14%;
+      font-size: 3.2rem;
+      color: rgba(14, 88, 255, 0.75);
+      animation-delay: -1s;
+    }
+
+    /* Medium floating elements */
+    .shape-5 {
+      top: 32%;
+      left: 18%;
+      font-size: 2rem;
+      color: rgba(255, 107, 53, 0.6);
+      animation-delay: -3s;
+    }
+
+    .shape-6 {
+      bottom: 42%;
+      right: 22%;
+      font-size: 1.8rem;
+      color: rgba(139, 43, 168, 0.65);
+      animation-delay: -5s;
+    }
+
+    /* Small accent elements */
+    .shape-7 {
+      top: 38%;
+      right: 28%;
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      animation-delay: -6s;
+    }
+
+    .shape-8 {
+      bottom: 58%;
+      left: 24%;
+      font-size: 1.3rem;
+      color: rgba(14, 88, 255, 0.7);
+      animation-delay: -7s;
+    }
+
+    @keyframes shapeFloat {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+      }
+
+      25% {
+        transform: translateY(-15px) rotate(45deg) scale(1.05);
+      }
+
+      50% {
+        transform: translateY(8px) rotate(90deg) scale(0.95);
+      }
+
+      75% {
+        transform: translateY(-10px) rotate(135deg) scale(1.02);
+      }
+    }
+
+    /* Modern Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.7;
+      text-align: center;
+      animation: scrollPulse 3s ease-in-out infinite;
+    }
+
+    .scroll-line {
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+      margin: 0 auto 12px;
+      border-radius: 1px;
+    }
+
+    .scroll-text {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .scroll-arrow {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.6);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.7;
+        transform: translateX(-50%) translateY(0px);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    /* Responsive Halloween Elements */
+    @media (max-width: 768px) {
+      .shape-1 {
+        font-size: 2.5rem;
+        top: 18%;
+        right: 6%;
+      }
+
+      .shape-2 {
+        font-size: 2.2rem;
+        bottom: 32%;
+        left: 4%;
+      }
+
+      .shape-3 {
+        font-size: 2rem;
+        top: 52%;
+        right: 2%;
+      }
+
+      .shape-4 {
+        font-size: 2.3rem;
+        top: 78%;
+        left: 10%;
+      }
+
+      .shape-5 {
+        font-size: 1.5rem;
+        top: 35%;
+        left: 14%;
+      }
+
+      .shape-6 {
+        font-size: 1.4rem;
+        bottom: 48%;
+        right: 18%;
+      }
+
+      .shape-7 {
+        font-size: 1.1rem;
+        top: 42%;
+        right: 24%;
+      }
+
+      .shape-8 {
+        font-size: 1rem;
+        bottom: 62%;
+        left: 18%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape {
+        opacity: 0.12;
+      }
+
+      .shape-1,
+      .shape-2,
+      .shape-3,
+      .shape-4 {
+        font-size: 1.8rem;
+      }
+
+      .shape-5,
+      .shape-6 {
+        font-size: 1.2rem;
+      }
+
+      .shape-7,
+      .shape-8 {
+        font-size: 0.9rem;
+      }
+
+      @keyframes shapeFloat {
+
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+        }
+
+        50% {
+          transform: translateY(3px) rotate(45deg) scale(1.02);
+        }
       }
     }
 
@@ -356,13 +1044,45 @@
     }
 
     .tile {
-      background: var(--paper);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: var(--shadow-soft);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow:
+        0 8px 32px rgba(10, 42, 106, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
       display: grid;
-      gap: 10px;
-      border: 1px solid #e9edff
+      gap: 12px;
+      border: 1px solid rgba(14, 88, 255, 0.1);
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .tile::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .tile:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 16px 48px rgba(10, 42, 106, 0.12),
+        0 0 0 1px rgba(14, 88, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .tile:hover::before {
+      transform: scaleX(1);
     }
 
     .tile h3 {
@@ -384,13 +1104,22 @@
 
     .badge {
       display: inline-block;
-      background: #edfbff;
-      color: #046b7b;
-      border: 1px solid #bfefff;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-weight: 700;
-      font-size: .85rem
+      background: linear-gradient(135deg, rgba(14, 88, 255, 0.1), rgba(139, 43, 168, 0.08));
+      backdrop-filter: blur(10px);
+      color: var(--brand-ink);
+      border: 1px solid rgba(14, 88, 255, 0.2);
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(14, 88, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(14, 88, 255, 0.12);
     }
 
 
@@ -410,11 +1139,24 @@
     }
 
     .card {
-      background: var(--paper);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid #e9edff
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow:
+        0 8px 32px rgba(10, 42, 106, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(14, 88, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 12px 40px rgba(10, 42, 106, 0.12),
+        0 0 0 1px rgba(14, 88, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .muted {
@@ -423,32 +1165,105 @@
 
     .kpis {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 10px
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .kpi {
-      background: #fff;
-      border: 1px solid #e9edff;
-      border-radius: 14px;
-      padding: 14px;
-      text-align: center
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(14, 88, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .kpi::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .kpi:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(14, 88, 255, 0.15);
+    }
+
+    .kpi:hover::before {
+      transform: scaleX(1);
     }
 
     .kpi strong {
       display: block;
-      font-size: 1.3rem;
-      color: var(--brand-ink)
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--brand-ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
 
-    /* CTA bar */
+    .kpi .tiny {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (min-width: 640px) {
+      .kpis {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    /* Modern CTA Section */
     .cta {
-      background: linear-gradient(135deg, var(--brand) 0%, #1747ff 100%);
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 43, 168, 0.25) 0%, transparent 50%),
+        linear-gradient(135deg,
+          rgba(14, 88, 255, 0.95) 0%,
+          rgba(139, 43, 168, 0.85) 35%,
+          rgba(255, 107, 53, 0.8) 65%,
+          rgba(45, 27, 105, 0.9) 100%);
       color: #fff;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 26px
+      border-radius: 32px;
+      box-shadow:
+        0 25px 60px rgba(10, 42, 106, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 25% 40%, rgba(255, 255, 255, 0.06) 0%, transparent 20%),
+        radial-gradient(circle at 75% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 15%);
+      border-radius: 32px;
     }
 
     .cta .row {
@@ -553,61 +1368,167 @@
     </div>
   </header>
 
-  <!-- GRAND OPENING COUNTDOWN BANNER -->
+  <!-- HALLOWEEN SPECIAL BANNER -->
   <div
-    style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; text-align: center; padding: 14px 20px; position: relative; overflow: hidden;">
+    style="background: linear-gradient(135deg, #ff6b35 0%, #8b2ba8 50%, #2d1b69 100%); color: white; text-align: center; padding: 16px 20px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255, 107, 53, 0.3);">
     <div style="position: relative; z-index: 1;">
-      <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 6px;">🎉 GRAND OPENING SPECIAL!</div>
-      <div style="display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <span style="font-size: 1.3rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">20% OFF</span>
-        <span style="font-weight: 600; font-size: 1rem;">All Services • Ends in:</span>
-        <div id="countdown"
-          style="display: flex; gap: 8px; font-weight: 700; font-size: 1.1rem; font-family: monospace;">
-          <div><span id="days">0</span>d</div>
-          <div><span id="hours">00</span>h</div>
-          <div><span id="minutes">00</span>m</div>
-          <div><span id="seconds">00</span>s</div>
-        </div>
+      <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.4);">🎃
+        HALLOWEEN SPOOK-TACULAR!</div>
+      <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <span style="font-size: 1.4rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">FREE</span>
+        <span style="font-weight: 700; font-size: 1.1rem;">Spa Package Upgrade</span>
+        <span style="font-size: 1.4rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">$30 Value</span>
+
       </div>
     </div>
+    <!-- Decorative elements -->
+    <div
+      style="position: absolute; top: -10px; right: 10%; font-size: 2rem; opacity: 0.3; animation: float 3s ease-in-out infinite;">
+      👻</div>
+    <div
+      style="position: absolute; top: -5px; left: 15%; font-size: 1.5rem; opacity: 0.3; animation: float 2.5s ease-in-out infinite reverse;">
+      🦇</div>
+    <div
+      style="position: absolute; bottom: -8px; right: 20%; font-size: 1.8rem; opacity: 0.3; animation: float 2s ease-in-out infinite;">
+      🎃</div>
   </div>
+
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
 
   <!-- HERO -->
   <section class="hero section" id="top">
     <div class="container">
-      <div class="hero-card">
-        <div class="eyebrow">Mobile Pet Grooming</div>
-        <h1>Your pet's personal spa day, delivered!</h1>
+      <div class="hero-content">
+        <div class="eyebrow">✨ Premium Mobile Pet Grooming</div>
+        <h1>Your pet's personal spa day, delivered to your door!</h1>
         <p class="lead">We bring a spotless, fully equipped grooming van to your driveway, delivering a serene,
           one-on-one experience for pets and a frictionless day for you.</p>
 
         <div class="hero-cta">
-          <a href="booking.html" target="_blank" class="btn acuity-embed-button">🎉 BOOK NOW - 20% OFF Grand
-            Opening!</a>
-          <a class="btn btn-outline" href="#services">See services</a>
+          <a href="booking.html" target="_blank" class="btn acuity-embed-button"
+            style="background: linear-gradient(135deg, #ff6b35 0%, #8b2ba8 100%); border: none; box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);">
+            🎃 BOOK NOW - FREE Spa Upgrade!
+          </a>
+          <a class="btn btn-outline" href="#services">Explore Services</a>
         </div>
 
-        <div class="kpis" style="margin-top:18px">
-          <div class="kpi"><strong>No crates</strong><span class="tiny">Calm & hygienic</span></div>
-          <div class="kpi"><strong>We come to you</strong><span class="tiny">Zero travel</span></div>
+        <div class="kpis">
+          <div class="kpi">
+            <strong>No crates</strong>
+            <span class="tiny">Calm & hygienic</span>
+          </div>
+          <div class="kpi">
+            <strong>We come to you</strong>
+            <span class="tiny">Zero travel stress</span>
+          </div>
         </div>
       </div>
 
-      <svg class="paws" width="520" height="520" viewBox="0 0 120 120" aria-hidden="true">
-        <g fill="#0e58ff">
-          <circle cx="16" cy="18" r="6" />
-          <circle cx="28" cy="8" r="6" />
-          <circle cx="40" cy="18" r="6" />
-          <circle cx="28" cy="28" r="6" />
-          <path d="M60 60c-9 0-20 9-20 17 0 6 6 11 20 11s20-5 20-11c0-8-11-17-20-17z" />
-        </g>
-      </svg>
+      <!-- Halloween Floating Elements -->
+      <div class="geometric-shapes">
+        <!-- Large floating Halloween elements -->
+        <div class="shape shape-1">🧼</div>
+        <div class="shape shape-2">💧</div>
+        <div class="shape shape-3">🎃</div>
+        <div class="shape shape-4">🐾</div>
+
+        <!-- Medium floating elements -->
+        <div class="shape shape-5">👻</div>
+        <div class="shape shape-6">👻</div>
+
+        <!-- Small accent elements -->
+        <div class="shape shape-7">🫧</div>
+        <div class="shape shape-8">🎃</div>
+      </div>
+
+      <!-- Modern Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <div class="scroll-text">Scroll</div>
+        <div class="scroll-arrow">↓</div>
+      </div>
     </div>
   </section>
 
+  <style>
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-10px);
+      }
+
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+  </style>
+
   <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="container">
+  <section class="section" id="services" style="background:
+    radial-gradient(circle at 30% 20%, rgba(14, 88, 255, 0.3) 0%, transparent 70%),
+    radial-gradient(circle at 70% 80%, rgba(139, 43, 168, 0.25) 0%, transparent 65%),
+    radial-gradient(circle at 50% 40%, rgba(255, 107, 53, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg,
+      #dbeafe 0%,
+      #e0f2fe 25%,
+      #f0f9ff 50%,
+      #e0f2fe 75%,
+      #dbeafe 100%);
+    position: relative;">
+    <!-- Modern geometric pattern -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.15; background-image:
+      /* Hexagonal grid pattern */
+      repeating-linear-gradient(30deg,
+        transparent 0px,
+        transparent 40px,
+        rgba(14, 88, 255, 0.15) 40px,
+        rgba(14, 88, 255, 0.15) 80px),
+      repeating-linear-gradient(150deg,
+        transparent 0px,
+        transparent 45px,
+        rgba(139, 43, 168, 0.1) 45px,
+        rgba(139, 43, 168, 0.1) 90px),
+      /* Circular elements */
+      radial-gradient(circle at 25% 25%, rgba(255, 107, 53, 0.25) 0%, rgba(255, 107, 53, 0.25) 15px, transparent 15px, transparent 60px),
+      radial-gradient(circle at 75% 75%, rgba(14, 88, 255, 0.2) 0%, rgba(14, 88, 255, 0.2) 12px, transparent 12px, transparent 65px),
+      radial-gradient(circle at 50% 90%, rgba(139, 43, 168, 0.18) 0%, rgba(139, 43, 168, 0.18) 10px, transparent 10px, transparent 70px);
+      background-size: 120px 120px, 130px 130px, 200px 200px, 180px 180px, 160px 160px;">
+    </div>
+
+    <!-- Floating pet-themed elements -->
+    <div
+      style="position: absolute; top: 12%; right: 6%; font-size: 3rem; opacity: 0.25; color: var(--brand); animation: float 6s ease-in-out infinite; filter: drop-shadow(0 3px 6px rgba(14, 88, 255, 0.15));">
+      🧼</div>
+    <div
+      style="position: absolute; top: 68%; left: 4%; font-size: 2.8rem; opacity: 0.22; color: #ff6b35; animation: float 4s ease-in-out infinite reverse; filter: drop-shadow(0 3px 6px rgba(255, 107, 53, 0.12));">
+      💧</div>
+    <div
+      style="position: absolute; top: 32%; right: 12%; font-size: 2.5rem; opacity: 0.18; color: #8b2ba8; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 3px 6px rgba(139, 43, 168, 0.1));">
+      ✨</div>
+    <div
+      style="position: absolute; bottom: 22%; left: 10%; font-size: 2.7rem; opacity: 0.2; color: var(--brand); animation: float 7s ease-in-out infinite; filter: drop-shadow(0 3px 6px rgba(14, 88, 255, 0.12));">
+      🐾</div>
+    <div class="container" style="position: relative; z-index: 1;">
       <h2 style="margin-top:0;color:var(--brand-ink)">Signature Services</h2>
       <p class="muted">Transparent, high-end care. Final pricing varies by breed, coat, and condition. “Starting at”
         reflects small/short-coat guidance.</p>
@@ -621,17 +1542,34 @@
             <li>Ear cleaning, Teeth brushing, Nail Trimming</li>
             <li>Light brush-out & fragrance-free option</li>
           </ul>
-          <div class="price" style="margin-top: 8px;">
-            Starting at <span style="text-decoration: line-through; color: #6b7a99;">$64</span>
-            <span style="color: #ff6b35; font-weight: 800; margin-left: 4px;">$51</span>
-            <span
-              style="background: #ff6b35; color: white; padding: 2px 6px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-left: 6px;">20%
-              OFF</span>
+          <!-- Modern Price Display -->
+          <div
+            style="margin-top: 16px; padding: 16px; background: linear-gradient(135deg, rgba(14, 88, 255, 0.08), rgba(139, 43, 168, 0.06)); border-radius: 16px; border: 1px solid rgba(14, 88, 255, 0.15); position: relative; overflow: hidden;">
+            <div
+              style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--accent));">
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <div
+                  style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 2px;">
+                  Starting at</div>
+                <div style="font-size: 1.8rem; font-weight: 900; color: var(--brand-ink); line-height: 1;">$64</div>
+              </div>
+              <div style="text-align: right;">
+                <div
+                  style="font-size: 0.75rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); background: linear-gradient(135deg, rgba(14, 88, 255, 0.9), rgba(139, 43, 168, 0.8)); backdrop-filter: blur(10px); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 12px rgba(14, 88, 255, 0.2); margin-bottom: 4px;">
+                  ✨ FREE Spa Upgrade</div>
+                <div style="font-size: 0.7rem; color: var(--muted); font-weight: 500;">$30 value included</div>
+              </div>
+            </div>
           </div>
-          <span class="badge">Most popular for short coats</span>
-          <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
+          <div
+            style="margin-top: 8px; padding: 6px 12px; background: rgba(14, 88, 255, 0.05); border-radius: 8px; border-left: 3px solid var(--brand);">
+            <span style="font-size: 0.75rem; color: var(--muted); font-weight: 500;">*$15 service fee per stop</span>
+          </div>
           <a href="booking.html" target="_blank" class="btn"
-            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Bath & Brush</a>
+            style="margin-top: 12px; padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, rgba(14, 88, 255, 0.9), rgba(139, 43, 168, 0.8)); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(14, 88, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);">Book
+            Bath & Brush</a>
         </article>
 
         <article class="tile" aria-labelledby="svc3">
@@ -642,17 +1580,34 @@
             <li>Detangle & de-mat (as needed)</li>
             <li>Coat-specific finishing spray</li>
           </ul>
-          <div class="price" style="margin-top: 8px;">
-            Starting at <span style="text-decoration: line-through; color: #6b7a99;">$99</span>
-            <span style="color: #ff6b35; font-weight: 800; margin-left: 4px;">$79</span>
-            <span
-              style="background: #ff6b35; color: white; padding: 2px 6px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-left: 6px;">20%
-              OFF</span>
+          <!-- Modern Price Display -->
+          <div
+            style="margin-top: 16px; padding: 16px; background: linear-gradient(135deg, rgba(14, 88, 255, 0.08), rgba(139, 43, 168, 0.06)); border-radius: 16px; border: 1px solid rgba(14, 88, 255, 0.15); position: relative; overflow: hidden;">
+            <div
+              style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--accent));">
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <div
+                  style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 2px;">
+                  Starting at</div>
+                <div style="font-size: 1.8rem; font-weight: 900; color: var(--brand-ink); line-height: 1;">$99</div>
+              </div>
+              <div style="text-align: right;">
+                <div
+                  style="font-size: 0.75rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); background: linear-gradient(135deg, rgba(14, 88, 255, 0.9), rgba(139, 43, 168, 0.8)); backdrop-filter: blur(10px); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 12px rgba(14, 88, 255, 0.2); margin-bottom: 4px;">
+                  ✨ FREE Spa Upgrade</div>
+                <div style="font-size: 0.7rem; color: var(--muted); font-weight: 500;">$30 value included</div>
+              </div>
+            </div>
           </div>
-          <span class="badge">Show-ready finish</span>
-          <div class="tiny" style="margin-top: 8px; color: #6b7a99;">*$15 service fee per stop</div>
+          <div
+            style="margin-top: 8px; padding: 6px 12px; background: rgba(14, 88, 255, 0.05); border-radius: 8px; border-left: 3px solid var(--brand);">
+            <span style="font-size: 0.75rem; color: var(--muted); font-weight: 500;">*$15 service fee per stop</span>
+          </div>
           <a href="booking.html" target="_blank" class="btn"
-            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem;">Book Full Groom</a>
+            style="margin-top: 12px; padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, rgba(14, 88, 255, 0.9), rgba(139, 43, 168, 0.8)); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(14, 88, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);">Book
+            Full Groom</a>
         </article>
 
         <article class="tile" aria-labelledby="spa">
@@ -661,8 +1616,10 @@
             Pristine Spa Package</p>
 
           <div
-            style="background: linear-gradient(135deg, #8b5a2b 0%, #d4a853 50%, #f4d03f 100%); border-radius: 12px; padding: 16px; margin-bottom: 12px; color: white;">
-            <div style="font-weight: 700; margin-bottom: 8px; font-size: 1rem;">Pristine Spa Package — $30</div>
+            style="background: linear-gradient(135deg, rgba(14, 88, 255, 0.95), rgba(139, 43, 168, 0.9)); backdrop-filter: blur(20px); border-radius: 20px; padding: 20px; margin-bottom: 16px; color: white; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(14, 88, 255, 0.15); position: relative; overflow: hidden;">
+            <div style="font-weight: 700; margin-bottom: 12px; font-size: 1rem;">🎃 Halloween Spa Package — FREE
+              UPGRADE!
+            </div>
             <ul class="list" style="color: rgba(255, 255, 255, 0.95); margin: 0; font-size: 0.9rem;">
               <li>Nail grinding & buffing</li>
               <li>Blueberry facial & eye cleaning</li>
@@ -672,24 +1629,47 @@
             </ul>
           </div>
 
-          <div style="font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: var(--brand-ink);">Or choose
+          <div style="font-weight: 600; margin-bottom: 12px; font-size: 0.9rem; color: var(--brand-ink);">Or choose
             individual add-ons:</div>
-          <ul class="list" style="font-size: 0.85rem;">
-            <li>De-shed treatment <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
-            <li>Blueberry facial <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
-            <li>Anal gland expression <span class="price"
-                style="float: right; font-size: 0.9rem; color: var(--brand);">$10</span></li>
-            <li>Nail grinding & buffing <span class="price" style="float: right; font-size: 0.9rem;">$10</span></li>
-            <li>Specialty shampoo <span class="price" style="float: right; font-size: 0.9rem;">$5</span></li>
-            <li>Flea bath <span class="price" style="float: right; font-size: 0.9rem;">$30</span></li>
-          </ul>
+          <div style="display: grid; gap: 8px; font-size: 0.85rem;">
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; border: 1px solid rgba(14, 88, 255, 0.1);">
+              <span style="color: var(--brand-ink); font-weight: 500;">De-shed treatment</span>
+              <span class="price" style="font-weight: 700; color: var(--brand);">$30</span>
+            </div>
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; border: 1px solid rgba(14, 88, 255, 0.1);">
+              <span style="color: var(--brand-ink); font-weight: 500;">Blueberry facial</span>
+              <span class="price" style="font-weight: 700; color: var(--brand);">$10</span>
+            </div>
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; border: 1px solid rgba(14, 88, 255, 0.1);">
+              <span style="color: var(--brand-ink); font-weight: 500;">Anal gland expression</span>
+              <span class="price" style="font-weight: 700; color: var(--brand);">$10</span>
+            </div>
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; border: 1px solid rgba(14, 88, 255, 0.1);">
+              <span style="color: var(--brand-ink); font-weight: 500;">Nail grinding & buffing</span>
+              <span class="price" style="font-weight: 700; color: var(--brand);">$10</span>
+            </div>
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; border: 1px solid rgba(14, 88, 255, 0.1);">
+              <span style="color: var(--brand-ink); font-weight: 500;">Specialty shampoo</span>
+              <span class="price" style="font-weight: 700; color: var(--brand);">$5</span>
+            </div>
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; border: 1px solid rgba(14, 88, 255, 0.1);">
+              <span style="color: var(--brand-ink); font-weight: 500;">Flea bath</span>
+              <span class="price" style="font-weight: 700; color: var(--brand);">$30</span>
+            </div>
+          </div>
           <span class="badge" style="margin-top: 12px;">Luxury upgrades</span>
         </article>
 
         <article class="tile" aria-labelledby="vip"
-          style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border: 2px solid #f4a300; position: relative; overflow: hidden;">
+          style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.95), rgba(255, 237, 78, 0.9)); backdrop-filter: blur(20px); border: 2px solid rgba(244, 163, 0, 0.3); position: relative; overflow: hidden;">
           <div
-            style="position: absolute; top: 8px; right: -28px; background: #ff6b35; color: white; padding: 4px 40px; transform: rotate(45deg); font-weight: 800; font-size: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            style="position: absolute; top: 8px; right: -28px; background: linear-gradient(135deg, #ff6b35, #8b2ba8); color: white; padding: 4px 40px; transform: rotate(45deg); font-weight: 800; font-size: 0.75rem; box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);">
             VIP</div>
           <h3 id="vip" style="color: #8b5a2b; margin-top: 0;">👑 VIP Membership</h3>
           <p style="color: #8b5a2b; font-weight: 600; margin-bottom: 12px;">Exclusive benefits for recurring customers
@@ -707,48 +1687,38 @@
               Required</div>
             <div style="color: #5a3a1a; font-size: 0.85rem;">Schedule recurring grooming & save on every visit</div>
           </div>
-          <span class="badge"
-            style="background: rgba(139, 90, 43, 0.15); color: #8b5a2b; border-color: rgba(139, 90, 43, 0.3); margin-top: 12px;">Best
-            value for regulars</span>
           <a href="tel:+19378836776" class="btn"
-            style="margin-top: 12px; padding: 10px 16px; font-size: 0.9rem; background: #8b5a2b;">📞 Ask about VIP
-            Membership</a>
+            style="margin-top: 12px; padding: 12px 20px; font-size: 0.9rem; background: linear-gradient(135deg, rgba(139, 90, 43, 0.9), rgba(244, 163, 0, 0.8)); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139, 90, 43, 0.3); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">📞
+            Ask about VIP Membership</a>
         </article>
       </div>
 
-      <div class="card" style="margin-top:26px">
-        <h3 style="margin-top:0">What's included & Service Area</h3>
-        <p class="muted">Every service includes professional-grade shampoo & conditioner, gentle handling, ear
-          cleaning, teeth brushing, and complete van sanitization—delivering a premium grooming
-          experience. Your pet gets calm, 1-to-1 attention in a meticulously clean environment with certified groomers
-          using gentle, fear-free handling.</p>
-        <div class="kpis">
-          <div class="kpi"><strong>Sanitized</strong><span class="tiny">Between visits</span></div>
-          <div class="kpi"><strong>Insured</strong><span class="tiny">Professionally covered</span></div>
-          <div class="kpi"><strong>On time</strong><span class="tiny">Text ahead</span></div>
-        </div>
-        <div style="height:14px"></div>
-        <h4 style="margin:0 0 8px 0">Service Area</h4>
-        <p class="muted">Huber Heights • Vandalia • Beavercreek • Englewood • Dayton • Enon • Fairborn</p>
-        <p class="tiny">Not sure if you're in range? <a href="#contact">Ask us</a>—we can often accommodate nearby.
-        </p>
-        <div style="height:14px"></div>
-        <h4 style="margin:0 0 8px 0">Hours</h4>
-        <p class="muted">Everyday 8:00a–6:00p</p>
+      <!-- Compact Service Area Info -->
+      <div
+        style="text-align: center; margin-top: 32px; padding: 20px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); border-radius: 20px; border: 1px solid rgba(14, 88, 255, 0.1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);"
+        onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 32px rgba(14, 88, 255, 0.12)'"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+        <div style="font-size: 1.5rem; margin-bottom: 8px; opacity: 0.7;">📍</div>
+        <h4 style="margin: 0 0 8px 0; font-size: 1.1rem; color: var(--brand-ink);">Service Area</h4>
+        <p style="margin: 0 0 4px 0; font-weight: 600; color: var(--muted);">Huber Heights • Vandalia • Beavercreek •
+          Englewood • Dayton • Enon • Fairborn</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--muted);">Everyday 8:00a–6:00p • <a href="#contact"
+            style="color: var(--brand); font-weight: 600;">Not in range? Ask us!</a></p>
       </div>
+    </div>
     </div>
   </section>
 
   <!-- PROMOTIONS SECTION -->
   <section class="section" id="promotions"
-    style="padding: 48px 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+    style="padding: 48px 0; background: linear-gradient(135deg, rgba(14, 88, 255, 0.08), rgba(139, 43, 168, 0.06), rgba(255, 107, 53, 0.04));">
     <div class="container">
       <h2 style="margin-top:0; color:var(--brand-ink); text-align: center;">💰 Special Promotions</h2>
       <p class="muted" style="text-align: center; margin-bottom: 32px;">Share the love and save together!</p>
 
       <div style="max-width: 800px; margin: 0 auto;">
         <div class="card"
-          style="background: linear-gradient(135deg, #0e58ff 0%, #1747ff 100%); color: white; padding: 32px; box-shadow: 0 12px 32px rgba(14, 88, 255, 0.25);">
+          style="background: linear-gradient(135deg, rgba(14, 88, 255, 0.95), rgba(139, 43, 168, 0.9)); backdrop-filter: blur(20px); color: white; padding: 40px 32px; box-shadow: 0 16px 48px rgba(14, 88, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
           <div style="text-align: center;">
             <div style="font-size: 3rem; margin-bottom: 12px;">🎁</div>
             <h3 style="margin: 0 0 12px 0; color: white; font-size: 1.8rem;">Refer a Friend & You Both Save!</h3>
@@ -777,7 +1747,7 @@
             </p>
             <div style="margin-top: 24px;">
               <a href="tel:+19378836776" class="btn"
-                style="background: white; color: var(--brand); font-weight: 800; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);">
+                style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); color: var(--brand); font-weight: 700; box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);">
                 📞 Call to Claim Your Referral Bonus
               </a>
             </div>
@@ -791,20 +1761,24 @@
   </section>
 
   <!-- GALLERY LINK -->
-  <section class="section" style="padding: 48px 0; background: var(--paper-2);">
+  <section class="section"
+    style="padding: 48px 0; background: linear-gradient(135deg, rgba(255, 107, 53, 0.06), rgba(14, 88, 255, 0.04));">
     <div class="container">
       <div style="text-align: center; max-width: 600px; margin: 0 auto;">
         <div style="font-size: 3rem; margin-bottom: 16px;">📸</div>
         <h2 style="margin: 0 0 12px 0; color: var(--brand-ink);">See Our Work</h2>
         <p class="muted" style="margin-bottom: 24px;">Check out our mobile grooming van and the amazing transformations
           we've achieved for our furry clients.</p>
-        <a href="gallery.html" class="btn" style="font-size: 1rem;">View Gallery</a>
+        <a href="gallery.html" class="btn"
+          style="font-size: 1rem; background: linear-gradient(135deg, rgba(14, 88, 255, 0.9), rgba(139, 43, 168, 0.8)); backdrop-filter: blur(10px); box-shadow: 0 8px 25px rgba(14, 88, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);">View
+          Gallery</a>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section" id="faq">
+  <section class="section" id="faq"
+    style="background: linear-gradient(135deg, rgba(139, 43, 168, 0.04), rgba(255, 107, 53, 0.03));">
     <div class="container">
       <h2 style="color:var(--brand-ink);margin-top:0">FAQ</h2>
       <div class="tiles" style="margin-top:16px">
@@ -834,23 +1808,26 @@
     <div class="container cta" id="booking" style="scroll-margin-top:90px">
       <div class="row">
         <div>
-          <h3>🎉 Ready to save 20% on your pet's spa day?</h3>
-          <p style="margin: 8px 0 0; color: rgba(255,255,255,0.9); font-size: 1.1rem;">Grand Opening Special!</p>
+          <h3 style="margin: 0 0 8px 0; font-size: 1.8rem; font-weight: 800;">🎃 Experience Premium Pet Grooming</h3>
+          <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 1.1rem; font-weight: 500;">Complimentary Spa
+            Package Upgrade</p>
         </div>
         <div class="actions">
           <a href="booking.html" target="_blank" class="btn"
-            style="background: #ff6b35; color: white; font-weight: 800; box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);">🎉
-            CLAIM 20% OFF NOW</a>
+            style="background: linear-gradient(135deg, #ff6b35, #8b2ba8); color: white; font-weight: 700; box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);">
+            📅 Schedule Appointment
+          </a>
           <a class="btn btn-outline" href="tel:+19378836776">📞 Call 937.883.6776</a>
         </div>
       </div>
-      <p class="tiny" style="margin:16px 0 0 0">🎉 20% OFF Grand Opening Special • ⚡ Quick online booking • 💬 Text
-        available upon request • 🔥 Limited time offer!</p>
+      <p class="tiny" style="margin:16px 0 0 0">🎃 FREE $30 Spa Package • 💬 Text available upon request • 📅 Schedule
+        your appointment today</p>
     </div>
   </section>
 
   <!-- REVIEWS SECTION (Moved to bottom, smaller) -->
-  <section class="section" id="reviews" style="padding: 32px 0; background: var(--paper-2);">
+  <section class="section" id="reviews"
+    style="padding: 48px 0; background: linear-gradient(135deg, rgba(14, 88, 255, 0.05), rgba(139, 43, 168, 0.03));">
     <div class="container">
       <div style="text-align: center; margin-bottom: 20px;">
         <h3 style="margin: 0 0 6px; color: var(--brand-ink); font-size: 1.4rem;">What Pet Parents Are Saying</h3>
@@ -887,36 +1864,28 @@
       yearEl.textContent = new Date().getFullYear();
     }
 
-    // Countdown Timer to October 31, 2025 at 11:59 PM
-    function updateCountdown() {
-      const endDate = new Date('2025-10-31T23:59:59').getTime();
-      const now = new Date().getTime();
-      const distance = endDate - now;
-
-      if (distance < 0) {
-        document.getElementById('countdown').innerHTML = '<div style="color: white; font-weight: 700;">Offer Ended!</div>';
-        return;
+    // Modern Navbar Scroll Effect
+    const nav = document.querySelector('.nav');
+    if (nav) {
+      function updateNavOnScroll() {
+        const scrolled = window.scrollY > 50;
+        nav.classList.toggle('scrolled', scrolled);
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Throttle scroll events for better performance
+      let ticking = false;
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(updateNavOnScroll);
+          ticking = true;
+          setTimeout(() => { ticking = false; }, 10);
+        }
+      }
 
-      const daysEl = document.getElementById('days');
-      const hoursEl = document.getElementById('hours');
-      const minutesEl = document.getElementById('minutes');
-      const secondsEl = document.getElementById('seconds');
-
-      if (daysEl) daysEl.textContent = days;
-      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-      if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
-      if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+      window.addEventListener('scroll', requestTick, { passive: true });
+      updateNavOnScroll(); // Initial check
     }
 
-    // Update countdown immediately and then every second
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
 
     // Dynamic Reviews Loader
     function loadReviews() {
@@ -978,8 +1947,8 @@
     loadReviews();
 
     // Maintain focus/scroll target offset beneath sticky nav
-    const nav = document.querySelector('.nav');
-    const navHeight = nav ? nav.offsetHeight : 0;
+    const navbar = document.querySelector('.nav');
+    const navHeight = navbar ? navbar.offsetHeight : 0;
     for (const link of document.querySelectorAll('a[href^="#"]')) {
       link.addEventListener('click', function (e) {
         const id = this.getAttribute('href').slice(1);
