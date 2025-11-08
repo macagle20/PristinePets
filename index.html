@@ -1674,18 +1674,88 @@
         </article>
       </div>
 
-      <!-- Compact Service Area Info -->
+      <!-- Service Area Zip Code Checker -->
       <div
-        style="text-align: center; margin-top: 32px; padding: 20px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); border-radius: 20px; border: 1px solid rgba(14, 88, 255, 0.1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);"
-        onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 32px rgba(14, 88, 255, 0.12)'"
-        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-        <div style="font-size: 1.5rem; margin-bottom: 8px; opacity: 0.7;">📍</div>
-        <h4 style="margin: 0 0 8px 0; font-size: 1.1rem; color: var(--brand-ink);">Service Area</h4>
-        <p style="margin: 0 0 4px 0; font-weight: 600; color: var(--muted);">Huber Heights • Vandalia • Beavercreek •
-          Englewood • Dayton • Enon • Fairborn</p>
-        <p style="margin: 0; font-size: 0.85rem; color: var(--muted);">Everyday 8:00a–6:00p • <a href="#contact"
-            style="color: var(--brand); font-weight: 600;">Not in range? Ask us!</a></p>
+        style="text-align: center; margin-top: 32px; padding: 28px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 24px; border: 1px solid rgba(14, 88, 255, 0.15); box-shadow: 0 8px 32px rgba(14, 88, 255, 0.1);">
+        <div style="font-size: 1.8rem; margin-bottom: 12px; opacity: 0.8;">📍</div>
+        <h4 style="margin: 0 0 16px 0; font-size: 1.3rem; color: var(--brand-ink); font-weight: 700;">Check Your Service
+          Area</h4>
+        <p style="margin: 0 0 20px 0; font-weight: 600; color: var(--muted); font-size: 0.95rem;">Huber Heights •
+          Vandalia • Beavercreek • Englewood • Dayton • Enon • Fairborn</p>
+
+        <!-- Zip Code Input -->
+        <div style="max-width: 400px; margin: 0 auto 16px;">
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="text" id="zipCodeInput" placeholder="Enter your zip code" maxlength="5"
+              style="flex: 1; padding: 14px 18px; border: 2px solid rgba(14, 88, 255, 0.2); border-radius: 12px; font-size: 1rem; font-weight: 600; text-align: center; letter-spacing: 0.1em; transition: all 0.3s ease; outline: none;"
+              onkeypress="if(event.key === 'Enter') checkZipCode()"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <button onclick="checkZipCode()"
+              style="padding: 14px 24px; background: linear-gradient(135deg, var(--brand), #1747ff); color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 12px rgba(14, 88, 255, 0.3); transition: all 0.3s ease;"
+              onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(14, 88, 255, 0.4)'"
+              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(14, 88, 255, 0.3)'">
+              Check
+            </button>
+          </div>
+        </div>
+
+        <!-- Result Message -->
+        <div id="zipCodeResult" style="min-height: 50px; margin-top: 16px;"></div>
+
+        <p style="margin: 20px 0 0 0; font-size: 0.85rem; color: var(--muted);">Everyday 8:00a–6:00p</p>
       </div>
+
+      <script>
+        // Service area zip codes (combined from both lists)
+        const serviceAreaZips = [
+          '45005', '45066', '45301', '45305', '45324', '45325', '45327', '45342', '45344', '45345',
+          '45370', '45371', '45373', '45377', '45385', '45387', '45403', '45404', '45405', '45406',
+          '45409', '45414', '45415', '45416', '45417', '45419', '45420', '45429', '45430', '45431',
+          '45432', '45433', '45434', '45439', '45440', '45449', '45458', '45459', '45481', '45502',
+          '45503', '45504', '45505', '45506'
+        ];
+
+        function checkZipCode() {
+          const input = document.getElementById('zipCodeInput');
+          const result = document.getElementById('zipCodeResult');
+          const zipCode = input.value.trim();
+
+          if (!zipCode) {
+            result.innerHTML = '<p style="color: var(--muted); font-size: 0.9rem;">Please enter a zip code</p>';
+            return;
+          }
+
+          if (zipCode.length !== 5) {
+            result.innerHTML = '<p style="color: #dc2626; font-size: 0.9rem; font-weight: 600;">⚠️ Please enter a valid 5-digit zip code</p>';
+            return;
+          }
+
+          if (serviceAreaZips.includes(zipCode)) {
+            result.innerHTML = `
+              <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 163, 74, 0.1)); border: 2px solid #22c55e; border-radius: 16px; padding: 20px; margin: 0 auto; max-width: 400px;">
+                <div style="font-size: 3rem; margin-bottom: 8px;">✅</div>
+                <p style="margin: 0; color: #15803d; font-weight: 700; font-size: 1.1rem;">We Service Your Area!</p>
+                <p style="margin: 8px 0 0 0; color: #166534; font-size: 0.9rem;">Your zip code <strong>${zipCode}</strong> is in our service area. Book your appointment today!</p>
+              </div>
+            `;
+            input.style.borderColor = '#22c55e';
+            input.style.boxShadow = '0 0 0 3px rgba(34, 197, 94, 0.1)';
+          } else {
+            result.innerHTML = `
+              <div style="background: linear-gradient(135deg, rgba(218, 165, 32, 0.15), rgba(210, 105, 30, 0.1)); border: 2px solid #d4a853; border-radius: 16px; padding: 20px; margin: 0 auto; max-width: 400px;">
+                <div style="font-size: 2.5rem; margin-bottom: 8px;">📍</div>
+                <p style="margin: 0; color: #8b5a2b; font-weight: 700; font-size: 1.1rem;">Outside Our Standard Service Area</p>
+                <p style="margin: 8px 0 12px 0; color: #a0522d; font-size: 0.9rem;">Zip code <strong>${zipCode}</strong> is not in our standard service area, but we may still be able to help!</p>
+                <a href="tel:+19378836776" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #d2691e, #cd853f); color: white; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);">
+                  📞 Call Us to Inquire
+                </a>
+              </div>
+            `;
+            input.style.borderColor = '#d4a853';
+            input.style.boxShadow = '0 0 0 3px rgba(212, 168, 83, 0.1)';
+          }
+        }
+      </script>
     </div>
     </div>
   </section>
