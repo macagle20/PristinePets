@@ -622,19 +622,19 @@
         loadGallery();
 
         // Google Ads Conversion Tracking for Booking Buttons
-        function trackBookingConversion(buttonText) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'conversion', {
-                    'send_to': 'AW-17460884512/6iwhCMLAnL4bEKDo_4VB',
-                    'value': 1.0,
-                    'currency': 'USD'
-                });
-
-                gtag('event', 'book_now_click', {
-                    'event_category': 'engagement',
-                    'event_label': buttonText || 'Book Now Button'
-                });
-            }
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17460884512/6iwhCMLAnL4bEKDo_4VB',
+                'value': 1.0,
+                'currency': 'USD',
+                'event_callback': callback
+            });
+            return false;
         }
 
         // Attach conversion tracking to all booking buttons
@@ -642,8 +642,17 @@
             const bookingButtons = document.querySelectorAll('a[href*="booking.moego.pet"], a[href*="acuityscheduling"]');
             bookingButtons.forEach(function (button) {
                 button.addEventListener('click', function (e) {
-                    const buttonText = this.textContent.trim() || this.innerText.trim() || 'Book Now';
-                    trackBookingConversion(buttonText);
+                    const url = this.getAttribute('href');
+                    if (url && typeof gtag !== 'undefined') {
+                        e.preventDefault();
+                        gtag_report_conversion(url);
+
+                        // Also send as a custom event for analytics
+                        gtag('event', 'book_now_click', {
+                            'event_category': 'engagement',
+                            'event_label': this.textContent.trim() || 'Book Now Button'
+                        });
+                    }
                 });
             });
         });
