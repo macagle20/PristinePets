@@ -744,7 +744,32 @@
       yearEl.textContent = new Date().getFullYear();
     }
 
+    // Google Ads Conversion Tracking for Booking Buttons
+    function trackBookingConversion(buttonText) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-17460884512/6iwhCMLAnL4bEKDo_4VB',
+          'value': 1.0,
+          'currency': 'USD'
+        });
 
+        gtag('event', 'book_now_click', {
+          'event_category': 'engagement',
+          'event_label': buttonText || 'Book Now Button'
+        });
+      }
+    }
+
+    // Attach conversion tracking to all booking buttons
+    document.addEventListener('DOMContentLoaded', function () {
+      const bookingButtons = document.querySelectorAll('a[href*="booking.moego.pet"], a[href*="acuityscheduling"]');
+      bookingButtons.forEach(function (button) {
+        button.addEventListener('click', function (e) {
+          const buttonText = this.textContent.trim() || this.innerText.trim() || 'Book Now';
+          trackBookingConversion(buttonText);
+        });
+      });
+    });
   </script>
 
   <!-- Acuity Scheduling styles and scripts -->
