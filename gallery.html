@@ -12,9 +12,9 @@
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gallery — Pristine Pets Mobile Pet Grooming</title>
+    <title>Gallery — Pristine Pets (Permanently Closed)</title>
     <meta name="description"
-        content="See our mobile grooming van and amazing pet transformations. High-end mobile dog grooming in Tipp City, Huber Heights and nearby." />
+        content="Photo gallery from Pristine Pets mobile grooming. This business is permanently closed; images are for reference." />
 
     <style>
         :root {
@@ -226,6 +226,25 @@
             transform: translateY(0) scale(0.98);
         }
 
+        .btn.btn-disabled,
+        span.btn.btn-disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            pointer-events: none;
+            filter: grayscale(0.2);
+            user-select: none;
+        }
+
+        .btn.btn-disabled::before,
+        span.btn.btn-disabled::before {
+            display: none;
+        }
+
+        .btn.btn-disabled:hover,
+        span.btn.btn-disabled:hover {
+            transform: none;
+        }
+
         .muted {
             color: var(--muted)
         }
@@ -329,7 +348,8 @@
                 <a href="index.html#promotions">Promotions</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="index.html#contact">Contact</a>
-                <a href="https://booking.moego.pet/ol/PristinePets/book" target="_blank" class="btn">BOOK NOW!</a>
+                <span class="btn btn-disabled" role="button" aria-disabled="true" tabindex="-1"
+                    title="Online booking is no longer available">Booking closed</span>
             </nav>
         </div>
     </header>
@@ -621,41 +641,6 @@
         // Load gallery when page loads
         loadGallery();
 
-        // Google Ads Conversion Tracking for Booking Buttons
-        function gtag_report_conversion(url) {
-            var callback = function () {
-                if (typeof (url) != 'undefined') {
-                    window.location = url;
-                }
-            };
-            gtag('event', 'conversion', {
-                'send_to': 'AW-17460884512/6iwhCMLAnL4bEKDo_4VB',
-                'value': 1.0,
-                'currency': 'USD',
-                'event_callback': callback
-            });
-            return false;
-        }
-
-        // Attach conversion tracking to all booking buttons
-        document.addEventListener('DOMContentLoaded', function () {
-            const bookingButtons = document.querySelectorAll('a[href*="booking.moego.pet"], a[href*="acuityscheduling"]');
-            bookingButtons.forEach(function (button) {
-                button.addEventListener('click', function (e) {
-                    const url = this.getAttribute('href');
-                    if (url && typeof gtag !== 'undefined') {
-                        e.preventDefault();
-                        gtag_report_conversion(url);
-
-                        // Also send as a custom event for analytics
-                        gtag('event', 'book_now_click', {
-                            'event_category': 'engagement',
-                            'event_label': this.textContent.trim() || 'Book Now Button'
-                        });
-                    }
-                });
-            });
-        });
     </script>
 
 </body>

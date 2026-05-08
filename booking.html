@@ -13,8 +13,8 @@
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book Now | Pristine Pets — Mobile Pet Grooming</title>
-  <meta name="description" content="Schedule your Pristine Pets mobile grooming appointment." />
+  <title>Booking closed | Pristine Pets</title>
+  <meta name="description" content="Pristine Pets is permanently closed. Online booking is no longer available." />
   <meta name="format-detection" content="telephone=yes" />
   <style>
     :root {
@@ -115,20 +115,28 @@
       padding: 18px;
     }
 
-    .frame-wrap {
-      width: 100%;
-      height: 85vh;
-      min-height: 700px;
+    .closed-notice {
+      padding: 28px 24px;
+      text-align: center;
       border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid #e9edff;
-      box-shadow: 0 8px 24px rgba(10, 42, 106, .12);
+      border: 1px solid #fde68a;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      color: #78350f;
+      box-shadow: 0 8px 24px rgba(120, 53, 15, .08);
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0
+    .closed-notice h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      color: #92400e;
+    }
+
+    .closed-notice p {
+      margin: 0;
+      max-width: 52ch;
+      margin-inline: auto;
+      line-height: 1.55;
+      color: rgba(120, 53, 15, 0.95);
     }
 
     .tiny {
@@ -161,17 +169,13 @@
 
   <main>
     <div class="container">
-
-      <div class="frame-wrap">
-        <iframe src="https://booking.moego.pet/ol/PristinePets/book?utm_medium=embed" title="Online booking"
-          scrolling="no">
-        </iframe>
+      <div class="card closed-notice" role="status">
+        <h2>Pristine Pets has permanently closed</h2>
+        <p>We are no longer accepting appointments, and the online booking system has been disabled. Please visit <a
+            href="index.html" style="color: var(--brand); font-weight: 700;">the home page</a> for an archived overview
+          of our former services.</p>
       </div>
-
-      <p class="tiny" style="margin-top:10px">
-        Having trouble with the embed? <a class="tiny" href="https://booking.moego.pet/ol/PristinePets/book"
-          target="_blank" rel="noopener">Open the booking page in a new tab</a>.
-      </p>
+      <p class="tiny" style="margin-top:16px">Thank you to everyone who supported our mobile grooming business.</p>
     </div>
   </main>
 
