@@ -225,3 +225,10 @@ section[id] { scroll-margin-top: 1.2rem; }
 .session-card li:last-child { padding-bottom: 0; }
 .session-card li span { color: var(--ice); font: 700 .72rem/1 var(--mono); }
 @media (max-width: 760px) { .session-card { max-width: 36rem; } }
+
+.home-bundle { background: #f8faff; border-color: #a7bae6; }
+.home-intro { margin-top: clamp(1.5rem, 5vw, 3.4rem); scroll-margin-top: 1.2rem; }
+.home-intro .wrap { width: 100%; }
+.home-intro .intro-panel { background: var(--white); }
+.option-rate { font-size: clamp(1.15rem, 2.4vw, 1.55rem); font-weight: 730; line-height: 1.25; letter-spacing: -.025em; }
+.offer p.option-rate { color: var(--ink); }
