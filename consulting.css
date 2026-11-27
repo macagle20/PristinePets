@@ -26,7 +26,7 @@
 @media(max-width:680px){
   .header-inner{min-height:0;display:grid;grid-template-columns:minmax(0,1fr);gap:.65rem;padding-block:.7rem .5rem}
   .brand{justify-self:start}
-  .site-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.16rem;border-top:1px solid var(--line);padding-top:.45rem}
+  .site-nav{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) minmax(0,1.05fr) minmax(0,1fr);gap:.16rem;border-top:1px solid var(--line);padding-top:.45rem}
   .site-nav a{padding:0 .12rem;font-size:.875rem}
 }
 
@@ -39,3 +39,14 @@
 .intro-panel p+p:not(.badge){margin-top:.65rem}
 .intro-panel .badge{background:var(--white);border:1px solid var(--line)}
 @media(max-width:680px){.intro-panel{grid-template-columns:1fr}}
+
+
+.guide-excerpt{max-width:72ch;margin-inline:auto;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:clamp(1.35rem,5vw,3.1rem)}
+.guide-excerpt h2{margin-bottom:1.4rem}
+.guide-excerpt p:not(.eyebrow){font:clamp(1.0625rem,2vw,1.2rem)/1.75 var(--serif);color:var(--ink)}
+.guide-excerpt p+p:not(.eyebrow){margin-top:1em}
+.guide-steps{color:var(--ink);padding-left:1.5rem;margin:.2rem 0;columns:2;column-gap:3rem}
+.guide-steps li{break-inside:avoid;padding:.5rem .3rem;font-weight:650}
+.guide-steps li::marker{color:var(--accent);font-variant-numeric:tabular-nums}
+#preview,#startup-special,#consulting,#coming-soon{scroll-margin-top:1.2rem}
+@media(max-width:680px){.guide-steps{columns:1}}
